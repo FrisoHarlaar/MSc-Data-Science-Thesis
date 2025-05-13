@@ -1,6 +1,8 @@
 # own files
 thesis/
 data/
+backups/
+*.parquet
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

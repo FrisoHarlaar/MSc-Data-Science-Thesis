@@ -1,6 +1,8 @@
 from django.db import models
 from wagtail.snippets.models import register_snippet
 from wagtail.admin.panels import FieldPanel
+from pgvector.django import VectorField 
+
 
 class Book(models.Model):
     # IDs and unique identifiers
@@ -48,6 +50,8 @@ class Book(models.Model):
     # Additional fields that could be added as needed
     popular_shelves = models.JSONField(null=True, blank=True)  # Store shelves as JSON
     similar_books = models.JSONField(null=True, blank=True)  # Store similar book IDs as JSON
+
+    emotionclip_embedding = VectorField(dimensions=512, null=True, blank=True)
 
     panels = [
         FieldPanel("book_id"),

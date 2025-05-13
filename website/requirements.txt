@@ -8,3 +8,19 @@ tqdm==4.67.1
 pandas==2.2.3
 # https://github.com/pgvector/pgvector-python?tab=readme-ov-file#django
 pgvector==0.4.1
+
+#####
+# For EmotionCLIP
+#####
+torch
+torchvision
+scikit-learn
+einops
+ftfy
+regex
+orjson
+h5py
+rich
+termcolor
+
+
