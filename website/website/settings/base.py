@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     "home",
+    'books',
     "search",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -84,13 +85,13 @@ WSGI_APPLICATION = "website.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+import os, dj_database_url
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
+    "default": dj_database_url.parse(
+        os.getenv("DATABASE_URL", "postgresql://bookuser:supersecret@db:5432/bookdb"),
+        conn_max_age=600,
+    )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -193,3 +194,69 @@ WAGTAILDOCS_EXTENSIONS = [
     "xlsx",
     "zip",
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)d] %(message)s' # Added line number
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': { # Keep console for general output if you want
+            'level': 'INFO', # Maybe only show INFO+ on console
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        # --- New File Handler Definition ---
+        'file_command_log': {
+            'level': 'DEBUG', # Log DEBUG level and above to this file
+            'class': 'logging.FileHandler', # Use basic file handler
+            # --- Choose a path for your log file ---
+            # Ensure the directory exists and the process running Django has write permissions!
+            'filename': os.path.join(BASE_DIR, 'logs', 'import_books.log'),
+            'formatter': 'verbose' # Use the detailed format for the file
+        },
+         # --- Optional: Rotating File Handler (Better for production) ---
+#        'file_command_log_rotating': {
+#            'level': 'DEBUG',
+#            'class': 'logging.handlers.RotatingFileHandler',
+#            'filename': os.path.join(BASE_DIR, 'logs', 'import_books_rotating.log'),
+#            'maxBytes': 1024*1024*5,  # 5 MB max size per file
+#            'backupCount': 5,         # Keep 5 backup files (e.g., .1, .2, ...)
+#            'formatter': 'verbose',
+#        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'], # Django logs still go to console
+            'level': 'INFO',
+            'propagate': True,
+        },
+        # --- Logger for your command ---
+        'books.management.commands.import_books': {
+            # --- Use the file handler ---
+            'handlers': ['file_command_log'], # Or ['file_command_log_rotating'] if using that
+            'level': 'DEBUG', # Capture DEBUG level messages
+            'propagate': False, # Don't send these logs to the console via root logger
+        },
+        # You could add other loggers here...
+    },
+    # Optional: Root logger (catches anything not handled above if propagate=True)
+    # 'root': {
+    #     'handlers': ['console'], # Root logs go to console
+    #     'level': 'WARNING',
+    # }
+}
+
+# --- IMPORTANT: Create the log directory if it doesn't exist ---
+LOGGING_DIRS = [
+    os.path.join(BASE_DIR, 'logs'),
+    # Add other log directories if needed
+]
+for log_dir in LOGGING_DIRS:
+    os.makedirs(log_dir, exist_ok=True)

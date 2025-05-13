@@ -1,0 +1,20 @@
+services:
+  db:
+    image: timescale/timescaledb-ha:pg16-all      # ← includes timescaledb + pgvectorscale
+    environment:
+      POSTGRES_DB: bookdb
+      POSTGRES_USER: bookuser
+      POSTGRES_PASSWORD: supersecret
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    env_file: .env
+    ports: ["8000:8000"]
+    depends_on: [db]
+    volumes:  # hot-reload; remove in prod
+      - .:/app
+
+volumes:
+  db_data:
