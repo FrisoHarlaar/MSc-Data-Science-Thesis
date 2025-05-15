@@ -1,7 +1,7 @@
 from django.db import models
-from wagtail.snippets.models import register_snippet
 from wagtail.admin.panels import FieldPanel
 from pgvector.django import VectorField 
+import uuid
 
 
 class Book(models.Model):
@@ -59,6 +59,7 @@ class Book(models.Model):
         FieldPanel("isbn"),
         FieldPanel("title"),
         FieldPanel("authors"),
+        FieldPanel("similar_books"),
         FieldPanel("description"),
         FieldPanel("image_url"),
         FieldPanel("image_url_large"),
@@ -73,3 +74,23 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        indexes = [
+            # Add a pgvector index for faster similarity searches
+            models.Index(fields=['emotionclip_embedding'], name='emotionclip_idx'),
+        ]
+
+
+class UserImage(models.Model):
+    """Model to store user uploaded images for embedding generation"""
+    image = models.ImageField(upload_to='user_images/%Y/%m/%d/')
+    emotionclip_embedding = VectorField(dimensions=512, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    # Add a UUID to reference in URLs
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['emotionclip_embedding'], name='user_image_emotionclip_idx'),
+        ]

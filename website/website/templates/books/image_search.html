@@ -1,0 +1,317 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Find Books by Image{% endblock %}
+
+{% block content %}
+<div class="image-search-container">
+  <div class="search-header">
+    <h1>Find Books by Image</h1>
+    <p class="lead">Upload an image to discover books with similar visual style and emotional tone.</p>
+  </div>
+  
+  <div class="search-form-container">
+    <form method="post" enctype="multipart/form-data" class="image-upload-form">
+      {% csrf_token %}
+      
+      <div class="form-group">
+        <label for="{{ form.image.id_for_label }}" class="upload-label">
+          {{ form.image.label }}
+        </label>
+        {{ form.image }}
+        {% if form.image.errors %}
+          <div class="form-error">{{ form.image.errors }}</div>
+        {% endif %}
+        <p class="help-text">{{ form.image.help_text }}</p>
+      </div>
+      
+      <div class="form-options">
+        <div class="form-group">
+          <label for="{{ form.limit.id_for_label }}">{{ form.limit.label }}</label>
+          {{ form.limit }}
+        </div>
+        
+        <div class="form-group">
+          <label for="{{ form.emotion_filter.id_for_label }}">{{ form.emotion_filter.label }}</label>
+          {{ form.emotion_filter }}
+        </div>
+      </div>
+      
+      {% if form.non_field_errors %}
+        <div class="form-errors">
+          {% for error in form.non_field_errors %}
+            <p class="error-message">{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      <div class="form-submit">
+        <button type="submit" class="btn btn-primary">Find Similar Books</button>
+      </div>
+    </form>
+  </div>
+  
+  {% if submitted %}
+    <div id="results" class="search-results">
+      <h2>Books with similar visual style</h2>
+      
+      {% if similar_books %}
+        <div class="books-grid">
+          {% for book in similar_books %}
+            <div class="book-card">
+              <a href="{% url 'book_detail' pk=book.pk %}" class="book-link">
+                <div class="book-cover">
+                  {% if book.image_url_large %}
+                    <img src="{{ book.image_url_large }}" alt="{{ book.title }}" class="cover-img">
+                  {% elif book.image_url %}
+                    <img src="{{ book.image_url }}" alt="{{ book.title }}" class="cover-img">
+                  {% else %}
+                    <div class="cover-placeholder">No Cover</div>
+                  {% endif %}
+                </div>
+                <div class="book-info">
+                  <h3 class="book-title">{{ book.title|truncatechars:60 }}</h3>
+                  {% if book.authors %}
+                    <p class="book-author">
+                      {% if book.authors|length == 1 %}
+                        {{ book.authors.0.name }}
+                      {% else %}
+                        Multiple Authors
+                      {% endif %}
+                    </p>
+                  {% endif %}
+                  {% if book.average_rating %}
+                    <div class="book-rating">
+                      <span class="rating-stars">
+                        {% with ''|center:5 as range %}
+                          {% for _ in range %}
+                            {% if forloop.counter <= book.average_rating|floatformat:0|add:"0" %}
+                              <span class="star filled">★</span>
+                            {% elif forloop.counter <= book.average_rating|add:"0.5"|floatformat:0|add:"0" %}
+                              <span class="star half">★</span>
+                            {% else %}
+                              <span class="star">★</span>
+                            {% endif %}
+                          {% endfor %}
+                        {% endwith %}
+                      </span>
+                      <span class="rating-value">{{ book.average_rating }}</span>
+                    </div>
+                  {% endif %}
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="no-results">No books found with similar visual style. Try uploading a different image.</p>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .image-search-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .search-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .image-upload-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .upload-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .help-text {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.25rem;
+  }
+  
+  .form-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-options .form-group {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 0;
+  }
+  
+  .form-submit {
+    text-align: center;
+  }
+  
+  .btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-primary {
+    background-color: #0066cc;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0055aa;
+  }
+  
+  .form-error, .error-message {
+    color: #d32f2f;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  
+  .search-results {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+  
+  .search-results h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .book-card {
+    transition: transform 0.2s;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .book-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  
+  .book-cover {
+    position: relative;
+    padding-bottom: 150%; /* 2:3 aspect ratio */
+    overflow: hidden;
+  }
+  
+  .cover-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .cover-placeholder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: #666;
+    font-style: italic;
+  }
+  
+  .book-info {
+    padding: 1rem;
+    background: white;
+  }
+  
+  .book-title {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  
+  .book-author {
+    margin: 0 0 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .book-rating {
+    display: flex;
+    align-items: center;
+  }
+  
+  .rating-stars {
+    margin-right: 0.5rem;
+  }
+  
+  .star {
+    color: #ddd;
+  }
+  
+  .star.filled {
+    color: #f8ce0b;
+  }
+  
+  .star.half {
+    position: relative;
+    color: #ddd;
+  }
+  
+  .star.half::after {
+    content: "★";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    overflow: hidden;
+    color: #f8ce0b;
+  }
+  
+  .rating-value {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .no-results {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .form-options {
+      flex-direction: column;
+    }
+  }
+</style>
+{% endblock %}

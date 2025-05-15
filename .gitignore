@@ -2,7 +2,8 @@
 thesis/
 data/
 backups/
-*.parquet
+*.parquet*
+media/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

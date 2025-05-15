@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Processing Image...{% endblock %}
+
+{% block content %}
+<div class="processing-container">
+  <h1>Processing Your Image</h1>
+  
+  {% if error %}
+    <div class="error-message">
+      <p>Error processing image: {{ error }}</p>
+      <a href="{% url 'image_search' %}" class="btn btn-primary">Try Again</a>
+    </div>
+  {% else %}
+    <div class="processing-status">
+      <div class="spinner"></div>
+      <p>Analyzing visual elements and emotions in your image...</p>
+      <p class="small">This may take a few moments. Please don't refresh the page.</p>
+    </div>
+    
+    {% if user_image %}
+      <div class="uploaded-image">
+        <img src="{{ user_image.image.url }}" alt="Your uploaded image" class="preview-img">
+      </div>
+    {% endif %}
+  {% endif %}
+</div>
+
+<script>
+  // Auto-refresh logic to check for completion
+  (function() {
+    const checkProgress = () => {
+      // Reload the page every 2 seconds to check for completion
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    };
+    
+    // Start polling after a short delay
+    setTimeout(checkProgress, 1000);
+  })();
+</script>
+
+<style>
+  .processing-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .processing-status {
+    margin: 2rem 0;
+  }
+  
+  .spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #0066cc;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 2rem;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .small {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .uploaded-image {
+    margin-top: 2rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .preview-img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .error-message {
+    color: #d32f2f;
+    background-color: #ffebee;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+</style>
+{% endblock %}
