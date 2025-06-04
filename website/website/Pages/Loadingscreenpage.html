@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novelscape Inspiration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../PagesCSS/Style.css" />
+    <style>
+    .loading-container {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .loader {
+      border: 8px solid rgba(255,255,255,0.15);
+      border-top: 8px solid #fff;
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      animation: spin 1.2s linear infinite;
+      margin-bottom: 2rem;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    .loading-text {
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+
+      letter-spacing: 2px;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <div class="container2">
+    <div class="overlay-box">
+
+    <header class="header2">
+    <img src="../PagesIMAGES/Novescape Logo.png" alt="Novelscape Logo" class="header-logo" />
+    </header>
+
+    <div class="loading-container">
+        <div class="loader"></div>
+        <div class="loading-text">Loading your book recommendations...</div>
+      </div>
+
+    </div>
+  </div>
+  <script src="../PagesJAVASCRIPT/Scripts.js"></script>
+</body>
+</html>
+
+</body>
+</html>
