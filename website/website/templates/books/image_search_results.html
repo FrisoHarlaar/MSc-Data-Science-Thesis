@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Book Recommendations{% endblock %}
+
+{% block content %}
+<div class="results-container">
+  <h1>Books That Match Your Image</h1>
+  
+  <div class="results-summary">
+    <div class="uploaded-image">
+      <h3>Your Image</h3>
+      <img src="{{ user_image.image.url }}" alt="Your uploaded image" class="user-image">
+      
+      {% if emotion_prediction %}
+      <div class="emotion-analysis">
+        <h4>Detected Emotions</h4>
+        <div class="dominant-emotion">
+          <strong>{{ emotion_prediction.dominant_emotion|title }}</strong>
+          <span class="confidence">({{ emotion_prediction.confidence|floatformat:1 }}% confidence)</span>
+        </div>
+        
+        <div class="emotion-bars">
+          {% for emotion, score in emotion_prediction.emotion_scores.items %}
+            <div class="emotion-bar">
+              <span class="emotion-name">{{ emotion|title }}</span>
+              <div class="bar-container">
+                <div class="bar-fill" style="width: {{ score|floatformat:1|add:"0"|mul:"100" }}%"></div>
+              </div>
+              <span class="emotion-score">{{ score|floatformat:2 }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    
+    <div class="results-explanation">
+      <h3>How We Found These Books</h3>
+      <p>We analyzed your image using <strong>{{ approach|title }}</strong> emotion detection and found books with similar emotional patterns.</p>
+      <p><a href="{% url 'image_search' %}" class="btn btn-secondary">Try Another Image</a></p>
+    </div>
+  </div>
+  
+  {% if similar_books %}
+    <div class="book-results">
+      <h2>Recommended Books</h2>
+      
+      <div class="books-grid">
+        {% for book in similar_books %}
+          <div class="book-card">
+            <a href="{% url 'book_detail' pk=book.pk %}" class="book-link">
+              <div class="book-cover">
+                {% if book.image_url_large %}
+                  <img src="{{ book.image_url_large }}" alt="{{ book.title }}" class="cover-img">
+                {% elif book.image_url %}
+                  <img src="{{ book.image_url }}" alt="{{ book.title }}" class="cover-img">
+                {% else %}
+                  <div class="cover-placeholder">No Cover</div>
+                {% endif %}
+              </div>
+              <div class="book-info">
+                <h3 class="book-title">{{ book.title|truncatechars:60 }}</h3>
+                {% if book.authors %}
+                  <p class="book-author">
+                    {% if book.authors|length == 1 %}
+                      {{ book.authors.0.name }}
+                    {% else %}
+                      Multiple Authors
+                    {% endif %}
+                  </p>
+                {% endif %}
+                {% if book.average_rating %}
+                  <div class="book-rating">
+                    <span class="rating-stars">
+                      {% with ''|center:5 as range %}
+                        {% for _ in range %}
+                          {% if forloop.counter <= book.average_rating|floatformat:0|add:"0" %}
+                            <span class="star filled">★</span>
+                          {% elif forloop.counter <= book.average_rating|add:"0.5"|floatformat:0|add:"0" %}
+                            <span class="star half">★</span>
+                          {% else %}
+                            <span class="star">★</span>
+                          {% endif %}
+                        {% endfor %}
+                      {% endwith %}
+                    </span>
+                    <span class="rating-value">{{ book.average_rating }}</span>
+                  </div>
+                {% endif %}
+                
+                {% if book.artemis_predicted_emotion %}
+                  <div class="book-emotion">
+                    <span class="emotion-tag">{{ book.artemis_predicted_emotion|title }}</span>
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <div class="no-results">
+      <h2>No matching books found</h2>
+      <p>We couldn't find any books matching your image's emotional profile. Try uploading a different image or adjusting your search parameters.</p>
+      <a href="{% url 'image_search' %}" class="btn btn-primary">Try Another Image</a>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .results-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: "Merriweather", Georgia, serif;
+  }
+  
+  .results-summary {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 3rem;
+    margin: 2rem 0 3rem 0;
+    align-items: start;
+  }
+  
+  .uploaded-image h3,
+  .results-explanation h3 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .user-image {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+  }
+  
+  .emotion-analysis {
+    background: #f8f8f8;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .emotion-analysis h4 {
+    margin: 0 0 1rem 0;
+    color: #444;
+  }
+  
+  .dominant-emotion {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .confidence {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .emotion-bars {
+    space-y: 0.5rem;
+  }
+  
+  .emotion-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .emotion-name {
+    width: 100px;
+    font-weight: 500;
+  }
+  
+  .bar-container {
+    flex: 1;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin: 0 0.5rem;
+    overflow: hidden;
+  }
+  
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #8B4513, #D2691E);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+  }
+  
+  .emotion-score {
+    width: 40px;
+    text-align: right;
+    color: #666;
+  }
+  
+  .book-results h2 {
+    color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  
+  .book-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .book-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  
+  .book-cover {
+    position: relative;
+    padding-bottom: 150%; /* 2:3 aspect ratio */
+    overflow: hidden;
+  }
+  
+  .cover-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .cover-placeholder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: #666;
+    font-style: italic;
+  }
+  
+  .book-info {
+    padding: 1.5rem;
+  }
+  
+  .book-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    color: #333;
+  }
+  
+  .book-author {
+    margin: 0 0 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .book-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .rating-stars {
+    margin-right: 0.5rem;
+  }
+  
+  .star {
+    color: #ddd;
+  }
+  
+  .star.filled {
+    color: #f8ce0b;
+  }
+  
+  .star.half {
+    position: relative;
+    color: #ddd;
+  }
+  
+  .star.half::after {
+    content: "★";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    overflow: hidden;
+    color: #f8ce0b;
+  }
+  
+  .rating-value {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .emotion-tag {
+    display: inline-block;
+    background: #8B4513;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .btn-primary {
+    background-color: #8B4513;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #A0522D;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  .no-results {
+    text-align: center;
+    padding: 3rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .results-summary {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .books-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+  }
+</style>
+{% endblock %}

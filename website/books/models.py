@@ -53,6 +53,19 @@ class Book(models.Model):
 
     emotionclip_embedding = VectorField(dimensions=512, null=True, blank=True)
 
+    # Artemis emotion predictions (9 emotions)
+    artemis_emotion_embedding = VectorField(dimensions=9, null=True, blank=True)
+    artemis_predicted_emotion = models.CharField(max_length=50, null=True, blank=True)
+    artemis_confidence = models.FloatField(null=True, blank=True)
+    
+    # BERT emotion predictions (9 emotions) 
+    bert_emotion_embedding = VectorField(dimensions=9, null=True, blank=True)
+    bert_predicted_emotion = models.CharField(max_length=50, null=True, blank=True)
+    bert_confidence = models.FloatField(null=True, blank=True)
+
+    multimodal_emotion_embedding = VectorField(dimensions=9, null=True, blank=True)
+
+
     panels = [
         FieldPanel("book_id"),
         FieldPanel("isbn13"),
@@ -79,18 +92,22 @@ class Book(models.Model):
         indexes = [
             # Add a pgvector index for faster similarity searches
             models.Index(fields=['emotionclip_embedding'], name='emotionclip_idx'),
+            models.Index(fields=['artemis_emotion_embedding'], name='artemis_emotion_idx'),
+            models.Index(fields=['bert_emotion_embedding'], name='bert_emotion_idx'),
+            models.Index(fields=['multimodal_emotion_embedding'], name='multimodal_emotion_idx'),
         ]
 
 
 class UserImage(models.Model):
-    """Model to store user uploaded images for embedding generation"""
+    """Model to store user uploaded images for emotion analysis"""
     image = models.ImageField(upload_to='user_images/%Y/%m/%d/')
-    emotionclip_embedding = VectorField(dimensions=512, null=True, blank=True)
+    artemis_emotion_embedding = VectorField(dimensions=9, null=True, blank=True)
+    dominant_emotion = models.CharField(max_length=50, null=True, blank=True)
+    confidence = models.FloatField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    # Add a UUID to reference in URLs
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     
     class Meta:
         indexes = [
-            models.Index(fields=['emotionclip_embedding'], name='user_image_emotionclip_idx'),
+            models.Index(fields=['artemis_emotion_embedding'], name='user_image_emotion_idx'),
         ]

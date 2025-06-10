@@ -3,7 +3,7 @@ from django import forms
 class ImageUploadForm(forms.Form):
     image = forms.ImageField(
         label='Upload an image',
-        help_text='Upload an image to find books with similar visual style and emotions'
+        help_text='Upload an image to find books with similar emotional content'
     )
     
     limit = forms.IntegerField(
@@ -14,21 +14,16 @@ class ImageUploadForm(forms.Form):
         required=False
     )
     
-    EMOTION_CHOICES = [
-        ('all', 'All emotions'),
-        ('amusement', 'Amusement'), 
-        ('awe', 'Awe'),
-        ('contentment', 'Contentment'),
-        ('excitement', 'Excitement'),
-        ('anger', 'Anger'), 
-        ('disgust', 'Disgust'),
-        ('fear', 'Fear'),
-        ('sadness', 'Sadness')
+    APPROACH_CHOICES = [
+        ('multimodal', 'Multimodal (Best)'),
+        ('artemis', 'Visual Emotions Only'),
+        ('bert', 'Text Emotions Only'),
     ]
     
-    emotion_filter = forms.ChoiceField(
-        label='Filter by emotion',
-        choices=EMOTION_CHOICES,
+    approach = forms.ChoiceField(
+        label='Matching approach',
+        choices=APPROACH_CHOICES,
         required=False,
-        initial='all'
+        initial='multimodal',
+        widget=forms.RadioSelect
     )
