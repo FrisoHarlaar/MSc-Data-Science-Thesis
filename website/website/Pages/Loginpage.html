@@ -43,44 +43,45 @@
       </a>
     </div>
 
+
+    <img src="../PagesIMAGES/Novescape Logo.png" alt="Novelscape Logo" class="header-logo"/>
+    </header> 
     
-    <img src="../PagesIMAGES/Novescape Logo.png" alt="Novelscape Logo" class="header-logo" />
+    <div class="cards-container">
+          <div class="card">
+            <h2>Sign In</h2>
+            <form>
+              <input type="text" placeholder="Username" class="input-field" />
+              <input type="password" placeholder="Password" class="input-field" />
+              <a href="Forgotpasswordpage.html" class="forgot-password">Forgot password?</a>
+              <div class="button-container">
+                <button type="submit" class="card-btn">Sign In</button>
+              </div>
+            </form>
+          </div>
 
-    </header>
+        <!-- Divider -->
+        <div style="
+            width: 2px; 
+            height: 400px; 
+            background-color: white; 
+            margin: 0 15px;">
+        </div>
 
-      
-      <div class="left-section">
-        <img 
-          src="../PagesIMAGES/Upload Image.png" 
-          alt="Upload Image Icon" 
-          class="Upload-Image" 
-          onclick="document.getElementById('uploadInput').click();" 
-          style="cursor: pointer;" />
-        <input type="file" id="uploadInput" style="display: none;" accept="image/*" />
-      </div>
+          <div class="card">
+            <h2>Register</h2>
+            <form>
+              <input type="email" placeholder="Email Address" class="input-field" />
+              <input type="text" placeholder="Username" class="input-field" />
+              <input type="password" placeholder="Password" class="input-field" />
+              <div class="button-container">
+                <button type="submit" class="card-btn">Sign Up</button>
+              </div>
+            </form>
+          </div>
+    </div>
 
-      <div class="right-section">
-        <section class="intro">
-          <h1>1. UPLOAD AN IMAGE</h1>
-          
-          <p>
-            Select an image that captures a mood, tone, or atmosphere you enjoy.
-          </p>
-          <h1>2. FIND BOOKS</h1>
-          
-          <p>
-            Discover books that match the atmosphere of your image.
-          </p>
-        </section>
-
-        <a href="Loadingscreenpage.html" class="login-btn">
-        <span class="glow"></span>
-        TEMP NEXT BUTTON
-        </a>
-
-      </div>
-
-
+    </div>
     </div>
   </div>
   <script src="../PagesJAVASCRIPT/Scripts.js"></script>
