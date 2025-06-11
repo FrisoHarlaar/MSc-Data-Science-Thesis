@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Upload Image - Novelscape Inspiration{% endblock %}
+
+{% block body_class %}upload-page{% endblock %}
+
+{% block content %}
+<div class="left-section">
+    <img src="{% static 'images/upload-image.png' %}" 
+         alt="Upload Image Icon" 
+         class="Upload-Image" 
+         onclick="document.getElementById('id_image').click();" 
+         style="cursor: pointer;" />
+    
+    <!-- Django Form for Image Upload -->
+    <form method="post" enctype="multipart/form-data" id="upload-form" style="display: none;">
+        {% csrf_token %}
+        <!-- Django form field (hidden) -->
+        {{ form.image }}
+    </form>
+    
+    <!-- Preview area for uploaded image -->
+    <div id="image-preview" style="display: none; margin-top: 20px;">
+        <img id="preview-img" style="max-width: 300px; max-height: 300px; object-fit: contain;" />
+    </div>
+</div>
+
+<div class="right-section">
+    <section class="intro">
+        <h1>1. UPLOAD AN IMAGE</h1>
+        <p>Select an image that captures a mood, tone, or atmosphere you enjoy.</p>
+        
+        <h1>2. FIND BOOKS</h1>
+        <p>Discover books that match the atmosphere of your image.</p>
+    </section>
+
+    <!-- Submit button -->
+    <button type="submit" form="upload-form" class="login-btn" id="submit-btn" disabled>
+        <span class="glow"></span>
+        FIND BOOKS
+    </button>
+
+    <!-- Display form errors if any -->
+    {% if form.errors %}
+        <div class="error-messages" style="color: #ff6b6b; margin-top: 15px;">
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- GPU status indicator (for debugging) -->
+    {% if debug %}
+        <div style="color: #888; font-size: 12px; margin-top: 20px;">
+            GPU Available: {{ gpu_available|yesno:"Yes,No" }}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Handle file selection and preview
+    document.getElementById('id_image').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        const submitBtn = document.getElementById('submit-btn');
+        const preview = document.getElementById('image-preview');
+        const previewImg = document.getElementById('preview-img');
+        
+        if (file) {
+            // Enable submit button
+            submitBtn.disabled = false;
+            
+            // Show preview
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            // Disable submit button
+            submitBtn.disabled = true;
+            preview.style.display = 'none';
+        }
+    });
+
+    // Handle form submission
+    document.getElementById('upload-form').addEventListener('submit', function(e) {
+        const fileInput = document.getElementById('id_image');
+        if (!fileInput.files.length) {
+            e.preventDefault();
+            alert('Please select an image first.');
+            return false;
+        }
+        
+        // Show loading state
+        const submitBtn = document.getElementById('submit-btn');
+        submitBtn.innerHTML = '<span class="glow"></span>PROCESSING...';
+        submitBtn.disabled = true;
+        
+        console.log('Form submitted with file:', fileInput.files[0].name);
+    });
+</script>
+{% endblock %}

@@ -1,12 +1,11 @@
 import torch
-import os
-import threading
 import queue
-import time
-from PIL import Image
-from torchvision import transforms
-from io import BytesIO
+import threading
 import logging
+from PIL import Image
+from io import BytesIO
+from torchvision import transforms
+import uuid
 
 logger = logging.getLogger(__name__)
 
@@ -16,6 +15,14 @@ class ImageEmbeddingService:
     def __init__(self, model_path="models/EmotionCLIP/emotionclip_latest.pt"):
         self.model_path = model_path
         self.model = None
+        
+        # Set device - prioritize GPU if available
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        logger.info(f"ImageEmbeddingService using device: {self.device}")
+        if torch.cuda.is_available():
+            logger.info(f"GPU: {torch.cuda.get_device_name(0)}")
+            logger.info(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.1f} GB")
+        
         self.preprocess = transforms.Compose([
             transforms.Resize(224, interpolation=transforms.InterpolationMode.BICUBIC),
             transforms.CenterCrop(224),
@@ -25,19 +32,17 @@ class ImageEmbeddingService:
                 std=[0.26862954, 0.26130258, 0.27577711]
             )
         ])
-        self.dummy_mask = torch.ones((1, 224, 224), dtype=torch.bool)
+        self.dummy_mask = torch.ones((1, 224, 224), dtype=torch.bool, device=self.device)
         
         # Queue for processing requests
         self.request_queue = queue.Queue()
         self.response_dict = {}
+        self.model_ready = threading.Event()
         
         # Start background thread for model loading and processing
         self.worker_thread = threading.Thread(target=self._worker_loop, daemon=True)
         self.worker_thread.start()
-        
-        # Wait for model to load on first request
-        self.model_ready = threading.Event()
-    
+
     def _worker_loop(self):
         """Background worker that handles model loading and inference"""
         try:
@@ -47,6 +52,7 @@ class ImageEmbeddingService:
             
             # Load the model
             try:
+                # Load checkpoint to CPU first, then move to device
                 checkpoint = torch.load(self.model_path, map_location="cpu")
                 
                 if "state_dict" in checkpoint:
@@ -58,8 +64,21 @@ class ImageEmbeddingService:
                     state = checkpoint
                     
                 self.model.load_state_dict(state, strict=False)
+                
+                # Move model to GPU and set to eval mode
+                self.model = self.model.to(self.device)
                 self.model.eval()
-                logger.info("Model loaded successfully in background thread!")
+                
+                logger.info(f"Model loaded successfully on {self.device}!")
+                
+                # Warm up the model with a dummy forward pass
+                if self.device.type == 'cuda':
+                    dummy_input = torch.randn(1, 3, 224, 224, device=self.device)
+                    dummy_mask = torch.ones((1, 224, 224), dtype=torch.bool, device=self.device)
+                    with torch.no_grad():
+                        _ = self.model.encode_image(dummy_input, dummy_mask)
+                    logger.info("GPU model warmed up successfully!")
+                
                 self.model_ready.set()  # Signal that model is ready
                 
             except Exception as e:
@@ -78,12 +97,13 @@ class ImageEmbeddingService:
                         else:
                             img = image_data
                             
-                        # Generate embedding
+                        # Generate embedding on GPU
                         with torch.no_grad():
-                            x = self.preprocess(img).unsqueeze(0)
+                            x = self.preprocess(img).unsqueeze(0).to(self.device)  # Move input to GPU
                             embedding = self.model.encode_image(x, self.dummy_mask)
                             embedding = torch.nn.functional.normalize(embedding, dim=-1)
-                            result = embedding.squeeze(0).tolist()
+                            # Move result back to CPU for storage
+                            result = embedding.cpu().squeeze(0).tolist()
                             
                         # Store result
                         self.response_dict[request_id] = {
@@ -97,46 +117,32 @@ class ImageEmbeddingService:
                             'status': 'error',
                             'error': str(e)
                         }
-                        
+                    
                     self.request_queue.task_done()
                     
                 except queue.Empty:
-                    # No requests in queue, continue waiting
                     continue
+                except Exception as e:
+                    logger.error(f"Error in worker loop: {e}")
                     
         except Exception as e:
-            logger.error(f"Background worker failed: {e}")
-    
+            logger.error(f"Critical error in worker thread: {e}")
+
     def get_embedding_async(self, image_data):
         """Submit an image for async processing and get a request ID"""
-        request_id = f"req_{time.time()}_{hash(str(image_data))}"
+        request_id = str(uuid.uuid4())
         self.request_queue.put((request_id, image_data))
         return request_id
-    
+
     def get_embedding_result(self, request_id, timeout=30):
         """Poll for result of an async embedding request"""
-        start_time = time.time()
-        
-        # First wait for model to be loaded
+        # Wait for model to be ready first
         if not self.model_ready.wait(timeout=timeout):
             return {'status': 'error', 'error': 'Model loading timeout'}
         
-        # Then wait for specific result
-        while time.time() - start_time < timeout:
-            if request_id in self.response_dict:
-                result = self.response_dict[request_id]
-                del self.response_dict[request_id]  # Clean up
-                return result
-            time.sleep(0.1)
-            
-        return {'status': 'error', 'error': 'Processing timeout'}
-
-# Global service instance
-_service_instance = None
-
-def get_embedding_service():
-    """Get the global embedding service instance"""
-    global _service_instance
-    if _service_instance is None:
-        _service_instance = ImageEmbeddingService()
-    return _service_instance
+        # Check if result is available
+        if request_id in self.response_dict:
+            result = self.response_dict.pop(request_id)
+            return result
+        else:
+            return {'status': 'pending'}

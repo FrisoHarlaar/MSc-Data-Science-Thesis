@@ -1,0 +1,703 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Playfair Display', serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.container {
+  background: url('../PagesIMAGES/Novelscape Background.png') no-repeat center center fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container2 {
+  background: url('../PagesIMAGES/Novelscape\ Background\ Alternative.png') no-repeat center center fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-box {
+  border: 4px solid #ffffff;
+  border-radius: 20px;
+  width: 96vw;
+  min-height: 92vh; /* <- allow it to expand downward */
+  max-width: 1800px;
+  max-height: 100vh; /* Optional: to prevent overflow beyond viewport */
+  margin: auto;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.0);
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 2vw;
+}
+
+header {
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.header2 {
+  position: absolute;
+  top: 1.5vw;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  z-index: 10;
+}
+
+.login-btn {
+  position: relative;
+  background: white;
+  color: #012a20;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  overflow: hidden;
+  z-index: 1;
+     /* Add this for smooth transition */
+  transition: background-color 1.0s ease;
+    text-decoration: none; /* Remove underline */
+
+}
+
+.login-btn:hover {
+  background-color: #FFD1AD;
+      transform: scale(1.1); /* Optional zoom on hover */
+}
+
+
+/* Centered site logo */
+.header-logo {
+  position: absolute;
+    top: 1rem; /* adjust this value as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  height: 150px; /* small size */
+  object-fit: contain;
+  cursor: default;
+  user-select: none;
+}
+
+.header-left-icons {
+  position: absolute;
+  right: 8.5rem; /* Adjust spacing from right (login button is near right) */
+  top: 1rem; /* adjust this value as needed */
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+/* Style for icons */
+.header-icon {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: opacity 1.0s ease; /* Smooth transition */
+}
+
+.header-icon:hover {
+  transform: scale(1.1); /* Optional zoom on hover */
+}
+
+.left-section {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  margin-left: 2vw;
+}
+
+
+.right-section {
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  margin-right: 2vw;
+}
+
+
+.divider-line {
+  width: 2px;
+  height: 80%;
+  background-color: white;
+}
+
+
+.logo {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.Upload-Image {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+  margin-top: 10rem;
+}
+
+
+.intro {
+  max-width: 540px;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.intro h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #fff;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.intro p {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
+}
+
+.start-btn {
+  position: relative;
+  background: white;
+  color: #012a20;
+  padding: 0.5rem 2.5rem;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+  z-index: 1;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none; /* remove underline */
+  /* existing styles */
+   /* Add this for smooth transition */
+  transition: background-color 1.0s ease;
+}
+
+.start-btn:hover {
+  background-color: #FFD1AD;
+  transform: scale(1.1); /* Optional zoom on hover */
+}
+
+
+
+@media (max-width: 1100px) {
+.overlay-box {
+    flex-direction: column;
+    min-height: 98vh;
+    width: 98vw;
+    padding: 0 1vw;
+  }
+  .left-section, .right-section {
+    margin: 0;
+    align-items: center;
+    width: 100%;
+  }
+  .intro {
+    margin-top: 0;
+    text-align: center;
+  }
+  .start-btn {
+    align-self: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .overlay-box {
+    flex-direction: column;
+    padding: 0.5rem;
+    min-height: 99vh;
+    width: 99vw;
+  }
+  .logo {
+    max-width: 250px;
+  }
+  .intro h1 {
+    font-size: 1.3rem;
+  }
+  .intro p {
+    font-size: 1rem;
+  }
+}
+
+-------------------------------------------
+
+.overlay-box-centered {
+  border: 4px solid #ffffff; /* Add the white border */
+  border-radius: 20px; /* Rounded corners */
+  width: 96vw; /* Responsive width */
+  min-height: 92vh; /* Allow it to expand downward */
+  max-width: 1800px; /* Prevent overflow beyond viewport */
+  max-height: 100vh; /* Optional: Prevent overflow beyond viewport */
+  margin: auto; /* Center the box */
+  color: white; /* Text color */
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  background: rgba(0, 0, 0, 0.5); /* Slightly darker background to make the border visible */
+  position: relative; /* Position relative for inner elements */
+  box-sizing: border-box; /* Include padding and border in width/height */
+  padding: 2vw; /* Add padding inside the box */
+}
+
+.cards-container {
+  display: flex; /* Align cards side-by-side */
+  justify-content: center; /* Center the cards horizontally */
+  align-items: center; /* Center the cards vertically */
+  gap: 2rem; /* Space between cards */
+  width: 100%; /* Ensure the container spans the full width */
+  padding-top: 8rem;
+}
+
+.card {
+  background-color: #222429;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 300px;
+  height: 350px; /* Adjust height to make cards longer */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack children vertically */
+}
+.card h2 {
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.card-wide {
+  background-color: #222429;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 500px;
+  height: 350px; /* Adjust height to make cards longer */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack children vertically */
+}
+
+.input-field {
+  width: 80%; /* Reduce width to make it fit better */
+  padding: 0.8rem;
+  margin: 1rem auto; /* Center the input fields horizontally */
+  border: none;
+  border-radius: 50px;
+  background-color: #4C505A;
+  color: #fff;
+  font-family: 'Playfair Display', serif; /* Change font to Playfair Display */
+  font-size: 1rem; /* Adjust font size if needed */
+  display: block; /* Ensure block-level alignment */
+}
+
+.forgot-password {
+  display: block;
+  margin: 0.5rem 0;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.button-container {
+  margin-top: auto; /* Push the button to the bottom */
+  display: flex; /* Ensure proper alignment */
+  justify-content: center; /* Center the button horizontally */
+  width: 100%; /* Ensure it spans the card width */
+}
+
+.card-btn {
+  background: white;
+  color: #012a20;
+  padding: 0.5rem 2.5rem;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+  text-decoration: none; /* Remove underline */
+  transition: background-color 1.0s ease; /* Smooth transition */
+}
+
+.card-btn:hover {
+  background-color: #FFD1AD;
+  transform: scale(1.1); /* Optional zoom on hover */
+}
+
+
+
+
+
+/* recommendation page css........................................................... */
+
+.recommendation-layout {
+  display: flex;
+  width: 100%;
+  height: calc(60vh - 2rem); /* Adjust height to fit the viewport minus padding/margin */
+  overflow: hidden;
+  position: relative;
+  padding-top: 6rem; /* Add padding to the top */
+}
+
+/* LEFT SECTION - Scrollable */
+.left-scrollable {
+  flex: 1.4;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  position: relative;
+  scrollbar-width: none; /* Firefox */
+}
+
+.left-scrollable::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: center;
+  gap: 2.5rem 2rem;
+  width: 100%;
+  padding-right: 1rem;
+}
+/* Single Card */
+.book-card {
+  width: 180px;
+  height: 300px;
+  border: 2px solid white;
+  border-radius: 15px;
+  text-align: center;
+  padding: 1.2rem .8rem;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  background-color: rgba(255, 255, 255, 0.03);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-card .card-btn {
+  margin: 0 auto;
+  width: auto;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 50px;
+}
+
+
+.book-card {
+  position: relative; /* Ensure positioning context for the icon */
+  border: 2px solid white; /* Optional: Add border for the book card */
+  border-radius: 10px; /* Rounded corners */
+  padding: 1rem; /* Add padding inside the card */
+  text-align: center; /* Center-align content */
+}
+
+.add-icon-container {
+  position: absolute; /* Position relative to the book card */
+  top: 10px; /* Adjust vertical position */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Correct centering */
+}
+
+.add-icon-btn {
+  background: none; /* Remove default button background */
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.add-icon {
+  width: 30px; /* Adjust icon size */
+  height: 30px;
+}
+
+.add-icon:hover {
+  transform: scale(1.1); /* Optional zoom on hover */
+}
+
+.hover-swap {
+  transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+}
+
+
+/* Middle divider: scrollbar track */
+.scroll-divider {
+  width: 10px; /* Divider width */
+  height: auto; /* Automatically adjust height */
+  background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white */
+  border-radius: 10px; /* Rounded corners */
+  position: relative; /* Position relative for the thumb */
+  margin: 0 1rem; /* Space around the divider */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.scroll-thumb {
+  width: 100%; /* Full width of the divider */
+  height: 80px; /* Height of the thumb */
+  background-color: #ffffff; /* Solid white color for the thumb */
+  border-radius: 10px; /* Rounded corners */
+  position: absolute; /* Position relative to the divider */
+  top: 0; /* Start at the top */
+  cursor: grab; /* Change cursor to grab */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+}
+
+/* RIGHT SECTION - Fixed */
+.right-fixed {
+  flex: 0.6;
+  padding: 2rem;
+  position: sticky;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto; /* Enable scrolling if content exceeds the bottom */
+  scrollbar-width: none; /* Firefox: Hide scrollbar */
+
+}
+
+.right-fixed h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.filters select {
+  display: block;
+  width: 60%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  border-radius: 100px;
+}
+
+.right-fixed .card-btn {
+  display: inline-block;
+  align-self: flex-start; /* Optional: aligns to left in flex column */
+  width: auto; /* Prevent full width */
+  margin-top: 2rem;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 300px; /* Adjust width as needed */
+  margin-bottom: 1rem; /* Space between dropdowns */
+}
+
+.dropdown-btn {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 0.5rem 1rem;
+  width: 250px;
+  border: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 100px
+}
+
+.dropdown-arrow {
+  width: 30px; /* Adjust size as needed */
+  height: 30px;
+  transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+.dropdown.open .dropdown-arrow {
+  transform: rotate(180deg); /* Rotate arrow downward when dropdown is open */
+}
+
+.dropdown-content {
+  display: none; /* Hidden by default */
+  background-color: #ffffff; /* White background */
+  color: #222429; /* Dark text color */
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 450px;
+  position: relative; /* Change to relative positioning */
+  margin-top: 0.5rem; /* Add space between button and content */
+}
+
+.dropdown.open .dropdown-content {
+  display: flex; /* Show dropdown when the parent has the "open" class */
+  flex-direction: row; /* Align columns side by side */
+  gap: 2rem; /* Space between columns */
+}
+
+.checkbox-column {
+  display: flex;
+  flex-direction: column; /* Stack checkboxes vertically */
+  gap: 0.5rem; /* Space between checkboxes */
+}
+
+.checkbox-column label {
+  font-family: 'Playfair Display', serif; /* Match font style */
+  font-size: 1rem; /* Adjust font size */
+  color: #222429; /* Text color */
+}
+
+.checkbox-column input[type="checkbox"] {
+  margin-right: 0.5rem; /* Space between checkbox and label */
+}
+
+
+
+
+
+
+
+/* Summary page css........................................................... */
+/* Content Layout */
+.content-layout {
+  display: flex; /* Use flexbox for columns */
+  gap: 2rem; /* Space between columns */
+  padding: 2rem; /* Add padding inside the overlay box */
+  height: 100%; /* Full height of the container */
+  padding-top: 8rem; /* Add padding to the top */
+}
+
+/* Left Column: Summary */
+.left-column {
+  flex: 1; /* Take up equal space */
+  color: white; /* Text color */
+  font-family: 'Playfair Display', serif; /* Font style */
+  font-size: 1rem; /* Adjust font size */
+}
+
+/* Middle Column: Book Card */
+.middle-column {
+  flex: 1; /* Take up equal space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-card-large {
+  width: 300px; /* Adjust width */
+  height: 450px; /* Adjust height */
+  border: 2px solid white; /* Add border */
+  border-radius: 15px; /* Rounded corners */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; /* Text color */
+  font-family: 'Playfair Display', serif; /* Font style */
+}
+
+/* Right Column: Extra Information */
+.right-column {
+  flex: 1; /* Take up equal space */
+  color: white; /* Text color */
+  font-family: 'Playfair Display', serif; /* Font style */
+  font-size: 1rem; /* Adjust font size */
+}
+
+.right-column h2 {
+  margin-bottom: 1rem; /* Space below heading */
+}
+
+.info-section {
+  margin-bottom: 1.5rem; /* Space between sections */
+}
+
+.info-section h3 {
+  margin-bottom: 0.5rem; /* Space below subheading */
+  font-size: 1.2rem; /* Adjust font size for subheading */
+}
+
+.info-section p {
+  margin: 0; /* Remove default paragraph margin */
+  font-size: 1rem; /* Adjust font size for text */
+}
+
+.info-item {
+  display: flex; /* Align icon and text horizontally */
+  gap: 1rem; /* Space between icon and text */
+  align-items: center; /* Center align icon and text vertically */
+}
+
+.info-icon {
+  width: 30px; /* Adjust icon width */
+  height: 30px; /* Adjust icon height */
+}
+
+
+/*favorites page css........................................................... */
+
+.favorites-grid {
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
+  gap: 2rem; /* Space between cards */
+  width: 100%; /* Limit the width of the grid */
+  max-height: 90%; /* Prevent the grid from exceeding the viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 2rem; /* Add padding around the grid */
+  border-radius: 10px; /* Rounded corners */
+  scrollbar-width: none; /* Firefox */
+  position: relative; /* Position context for the scrollbar */
+}

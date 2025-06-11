@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Book Recommendations - Novelscape Inspiration{% endblock %}
+
+{% block body_class %}recommendations-page{% endblock %}
+
+{% block content %}
+<div class="recommendation-layout">
+    <!-- LEFT: Scrollable Cards -->
+    <div class="left-scrollable">
+        <div class="cards-grid">
+            {% for book in similar_books %}
+                {% include "components/book_card.html" with book=book %}
+            {% empty %}
+                <div class="book-card">
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                        <p>No recommendations found</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- MIDDLE: Custom Scrollbar -->
+    <div class="scroll-divider">
+        <div class="scroll-thumb"></div>
+    </div>
+
+    <!-- RIGHT: Static Filters/Results -->
+    <div class="right-fixed">
+        <h2>RESULTS</h2>
+        <p>These are the books the system has recommended to you based on the aesthetic of the image you uploaded!</p>
+        
+        {% if emotion_prediction %}
+            <p style="margin: 1rem 0; font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                <strong>Detected emotion:</strong> {{ emotion_prediction.dominant_emotion|title }} 
+                ({{ emotion_prediction.confidence|floatformat:1 }}% confidence)
+            </p>
+        {% endif %}
+        
+        <div class="filters">
+            <!-- Category Filter -->
+            <div class="dropdown">
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">
+                    Category
+                    <img src="{% static 'images/icons/back-icon-dropdown.png' %}" alt="Dropdown Arrow" class="dropdown-arrow" />
+                </button>
+                <div class="dropdown-content">
+                    <!-- Select All Checkbox -->
+                    <div style="margin-bottom: 1rem;">
+                        <label>
+                            <input type="checkbox" id="select-all-category" onclick="toggleAllCheckboxes('category')"> Select All
+                        </label>
+                    </div>
+                    <!-- First Column -->
+                    <div class="checkbox-column">
+                        <label><input type="checkbox" name="category" value="Fantasy"> Fantasy</label>
+                        <label><input type="checkbox" name="category" value="Science fiction"> Science fiction</label>
+                        <label><input type="checkbox" name="category" value="Horror"> Horror</label>
+                        <label><input type="checkbox" name="category" value="Mystery"> Mystery</label>
+                        <label><input type="checkbox" name="category" value="Fiction"> Fiction</label>
+                        <label><input type="checkbox" name="category" value="Action"> Action</label>
+                        <label><input type="checkbox" name="category" value="Adventure"> Adventure</label>
+                    </div>
+
+                    <!-- Second Column -->
+                    <div class="checkbox-column">
+                        <label><input type="checkbox" name="category" value="History"> History</label>
+                        <label><input type="checkbox" name="category" value="Poetry"> Poetry</label>
+                        <label><input type="checkbox" name="category" value="Suspense"> Suspense</label>
+                        <label><input type="checkbox" name="category" value="Biography"> Biography</label>
+                        <label><input type="checkbox" name="category" value="Dystopian fiction"> Dystopian fiction</label>
+                        <label><input type="checkbox" name="category" value="Crime"> Crime</label>
+                        <label><input type="checkbox" name="category" value="Western fiction"> Western fiction</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mood Filter -->
+            <div class="dropdown">
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">
+                    Mood
+                    <img src="{% static 'images/icons/back-icon-dropdown.png' %}" alt="Dropdown Arrow" class="dropdown-arrow" />
+                </button>
+                <div class="dropdown-content">
+                    <!-- Select All Checkbox -->
+                    <div style="margin-bottom: 1rem;">
+                        <label>
+                            <input type="checkbox" id="select-all-mood" onclick="toggleAllCheckboxes('mood')"> Select All
+                        </label>
+                    </div>
+                    <!-- First Column -->
+                    <div class="checkbox-column">
+                        <label><input type="checkbox" name="mood" value="Whimsical"> Whimsical</label>
+                        <label><input type="checkbox" name="mood" value="Dark"> Dark</label>
+                        <label><input type="checkbox" name="mood" value="Uplifting"> Uplifting</label>
+                        <label><input type="checkbox" name="mood" value="Mysterious"> Mysterious</label>
+                        <label><input type="checkbox" name="mood" value="Romantic"> Romantic</label>
+                        <label><input type="checkbox" name="mood" value="Nostalgic"> Nostalgic</label>
+                        <label><input type="checkbox" name="mood" value="Reflective"> Reflective</label>
+                    </div>
+
+                    <!-- Second Column -->
+                    <div class="checkbox-column">
+                        <label><input type="checkbox" name="mood" value="Suspenseful"> Suspenseful</label>
+                        <label><input type="checkbox" name="mood" value="Empowering"> Empowering</label>
+                        <label><input type="checkbox" name="mood" value="Melancholic"> Melancholic</label>
+                        <label><input type="checkbox" name="mood" value="Hopeful"> Hopeful</label>
+                        <label><input type="checkbox" name="mood" value="Gritty"> Gritty</label>
+                        <label><input type="checkbox" name="mood" value="Serene"> Serene</label>
+                        <label><input type="checkbox" name="mood" value="Eerie"> Eerie</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="{% url 'image_search' %}" class="card-btn">
+            <span class="glow"></span>
+            Try Again?
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -17,6 +17,10 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok-free.app']
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -27,6 +31,7 @@ INSTALLED_APPS = [
     "home",
     'books',
     "search",
+    "users",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -80,6 +85,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "website.wsgi.application"
+
+AUTH_USER_MODEL = 'users.User'
 
 
 # Database
@@ -209,62 +216,66 @@ WAGTAILDOCS_EXTENSIONS = [
     "zip",
 ]
 
+# Update your LOGGING configuration
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)d] %(message)s' # Added line number
+            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)d] %(message)s'
         },
         'simple': {
             'format': '%(levelname)s %(message)s'
         },
     },
     'handlers': {
-        'console': { # Keep console for general output if you want
-            'level': 'INFO', # Maybe only show INFO+ on console
+        'console': {
+            'level': 'DEBUG',  # Changed from INFO to DEBUG to see more logs
             'class': 'logging.StreamHandler',
-            'formatter': 'simple'
+            'formatter': 'verbose'  # Changed to verbose for more detail
         },
-        # --- New File Handler Definition ---
         'file_command_log': {
-            'level': 'DEBUG', # Log DEBUG level and above to this file
-            'class': 'logging.FileHandler', # Use basic file handler
-            # --- Choose a path for your log file ---
-            # Ensure the directory exists and the process running Django has write permissions!
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'logs', 'import_books.log'),
-            'formatter': 'verbose' # Use the detailed format for the file
+            'formatter': 'verbose'
         },
-         # --- Optional: Rotating File Handler (Better for production) ---
-#        'file_command_log_rotating': {
-#            'level': 'DEBUG',
-#            'class': 'logging.handlers.RotatingFileHandler',
-#            'filename': os.path.join(BASE_DIR, 'logs', 'import_books_rotating.log'),
-#            'maxBytes': 1024*1024*5,  # 5 MB max size per file
-#            'backupCount': 5,         # Keep 5 backup files (e.g., .1, .2, ...)
-#            'formatter': 'verbose',
-#        },
     },
     'loggers': {
         'django': {
-            'handlers': ['console'], # Django logs still go to console
+            'handlers': ['console'],
             'level': 'INFO',
             'propagate': True,
         },
-        # --- Logger for your command ---
-        'books.management.commands.import_books': {
-            # --- Use the file handler ---
-            'handlers': ['file_command_log'], # Or ['file_command_log_rotating'] if using that
-            'level': 'DEBUG', # Capture DEBUG level messages
-            'propagate': False, # Don't send these logs to the console via root logger
+        # Add logger for your books app
+        'books': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
         },
-        # You could add other loggers here...
+        # Specific logger for your image emotion service
+        'books.services.image_emotion_service': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'books.management.commands.import_books': {
+            'handlers': ['file_command_log', 'console'],  # Added console handler
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'books.views': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
     },
-    # Optional: Root logger (catches anything not handled above if propagate=True)
-    # 'root': {
-    #     'handlers': ['console'], # Root logs go to console
-    #     'level': 'WARNING',
-    # }
+    # Add root logger to catch everything else
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    }
 }
 
 # --- IMPORTANT: Create the log directory if it doesn't exist ---

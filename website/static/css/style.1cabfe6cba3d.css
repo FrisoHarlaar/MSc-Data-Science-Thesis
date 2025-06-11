@@ -1,0 +1,913 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Playfair Display', serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  background: url("../images/novelscape-background.3fcc0c628df6.png") no-repeat center center fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container2 {
+  background: url("../images/novelscape-background-alternative.ca19ec894f30.png") no-repeat center center fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Key section: ensure the overlay-box maintains left-right layout for upload page */
+.overlay-box {
+  border: 4px solid #ffffff;
+  border-radius: 20px;
+  width: 96vw;
+  min-height: 92vh;
+  max-width: 1800px;
+  max-height: 100vh;
+  margin: auto;
+  color: white;
+  display: flex;
+  flex-direction: row; /* This ensures left-right layout */
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.0);
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 2vw;
+}
+
+/* Left section - image upload area */
+.left-section {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  margin-left: 2vw;
+  padding-right: 2vw; /* Add some spacing */
+}
+
+/* Right section - form controls and instructions */
+.right-section {
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  margin-right: 2vw;
+  padding-left: 2vw; /* Add some spacing */
+}
+
+header {
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.header2 {
+  position: absolute;
+  top: 1.5vw;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  z-index: 10;
+}
+
+.login-btn {
+  position: relative;
+  background: white;
+  color: #012a20;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  overflow: hidden;
+  z-index: 1;
+  transition: background-color 1.0s ease;
+  text-decoration: none; /* Remove underline */
+  display: inline-block;
+  text-align: center;
+}
+
+.login-btn:hover {
+  background-color: #FFD1AD;
+  transform: scale(1.1); /* Optional zoom on hover */
+}
+
+.login-btn:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Centered site logo */
+.header-logo {
+  position: absolute;
+  top: 1rem; /* adjust this value as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  height: 150px; /* small size */
+  object-fit: contain;
+  cursor: default;
+  user-select: none;
+}
+
+.header-left-icons {
+  position: absolute;
+  right: 8.5rem; /* Adjust spacing from right (login button is near right) */
+  top: 1rem; /* adjust this value as needed */
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+/* Style for icons */
+.header-icon {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: opacity 1.0s ease; /* Smooth transition */
+}
+
+.header-icon:hover {
+  transform: scale(1.1); /* Optional zoom on hover */
+}
+
+.divider-line {
+  width: 2px;
+  height: 80%;
+  background-color: white;
+}
+
+.logo {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.Upload-Image {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+  margin-top: 10rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.Upload-Image:hover {
+  transform: scale(1.05);
+}
+
+.intro {
+  max-width: 540px;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.intro h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  color: white;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #fff;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.intro p {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
+  color: white;
+}
+
+.start-btn {
+  position: relative;
+  background: white;
+  color: #012a20;
+  padding: 0.5rem 2.5rem;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+  z-index: 1;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none; /* remove underline */
+  transition: background-color 1.0s ease;
+}
+
+.start-btn:hover {
+  background-color: #FFD1AD;
+  transform: scale(1.1); /* Optional zoom on hover */
+}
+
+/* Form styling */
+.form-controls {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-controls label {
+  color: white;
+  display: block;
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+}
+
+.form-controls select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+}
+
+/* Image preview styling */
+#image-preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#preview-img {
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid white;
+}
+
+/* Error message styling */
+.error-messages {
+  color: #ff6b6b;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: rgba(255, 107, 107, 0.1);
+  border-radius: 5px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.error-messages p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments for upload page */
+@media (max-width: 1100px) {
+  .overlay-box {
+    flex-direction: column;
+    min-height: 98vh;
+    width: 98vw;
+    padding: 0 1vw;
+  }
+  
+  .left-section, .right-section {
+    margin: 0;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .intro {
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  .login-btn {
+    align-self: center;
+  }
+  
+  .Upload-Image {
+    margin-top: 2rem;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 700px) {
+  .overlay-box {
+    flex-direction: column;
+    padding: 0.5rem;
+    min-height: 99vh;
+    width: 99vw;
+  }
+  
+  .Upload-Image {
+    max-width: 250px;
+    margin-top: 1rem;
+  }
+  
+  .intro h1 {
+    font-size: 1.8rem;
+  }
+  
+  .intro p {
+    font-size: 1rem;
+  }
+  
+  .form-controls {
+    width: 100%;
+  }
+}
+
+/* Centered overlay box for login/signup pages */
+.overlay-box-centered {
+  border: 4px solid #ffffff;
+  border-radius: 20px;
+  width: 96vw;
+  min-height: 92vh;
+  max-width: 1800px;
+  max-height: 100vh;
+  margin: auto;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  box-sizing: border-box;
+  padding: 2vw;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  padding-top: 8rem;
+}
+
+.card {
+  background-color: #222429;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 300px;
+  height: 350px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.card h2 {
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.card-wide {
+  background-color: #222429;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 500px;
+  height: 350px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  width: 80%;
+  padding: 0.8rem;
+  margin: 1rem auto;
+  border: none;
+  border-radius: 50px;
+  background-color: #4C505A;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  display: block;
+}
+
+.forgot-password {
+  display: block;
+  margin: 0.5rem 0;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.button-container {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-btn {
+  background: white;
+  color: #012a20;
+  padding: 0.5rem 2.5rem;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 1.0s ease;
+}
+
+.card-btn:hover {
+  background-color: #FFD1AD;
+  transform: scale(1.1);
+}
+
+/* Recommendation page layout */
+.recommendation-layout {
+  display: flex;
+  width: 100%;
+  height: calc(60vh - 2rem);
+  overflow: hidden;
+  position: relative;
+  padding-top: 6rem;
+}
+
+/* LEFT SECTION - Scrollable */
+.left-scrollable {
+  flex: 1.4;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  position: relative;
+  scrollbar-width: none; /* Firefox */
+}
+
+.left-scrollable::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: center;
+  gap: 2.5rem 2rem;
+  width: 100%;
+  padding-right: 1rem;
+}
+
+/* Single Card */
+.book-card {
+  width: 180px;
+  height: 300px;
+  border: 2px solid white;
+  border-radius: 15px;
+  text-align: center;
+  padding: 1.2rem .8rem;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  background-color: rgba(255, 255, 255, 0.03);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-card .card-btn {
+  margin: 0 auto;
+  width: auto;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 50px;
+}
+
+.add-icon-container {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.add-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.add-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.add-icon:hover {
+  transform: scale(1.1);
+}
+
+.hover-swap {
+  transition: opacity 0.3s ease;
+}
+
+/* Middle divider: scrollbar track */
+.scroll-divider {
+  width: 10px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  position: relative;
+  margin: 0 1rem;
+  flex-shrink: 0;
+}
+
+.scroll-thumb {
+  width: 100%;
+  height: 80px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* RIGHT SECTION - Fixed */
+.right-fixed {
+  flex: 0.6;
+  padding: 2rem;
+  position: sticky;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox: Hide scrollbar */
+}
+
+.right-fixed h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.filters select {
+  display: block;
+  width: 60%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  border-radius: 100px;
+}
+
+.right-fixed .card-btn {
+  display: inline-block;
+  align-self: flex-start;
+  width: auto;
+  margin-top: 2rem;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  margin-bottom: 1rem;
+}
+
+.dropdown-btn {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 0.5rem 1rem;
+  width: 250px;
+  border: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 100px;
+}
+
+.dropdown-arrow {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #ffffff;
+  color: #222429;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 450px;
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.dropdown.open .dropdown-content {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.checkbox-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-column label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #222429;
+}
+
+.checkbox-column input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+/* Summary page layout */
+.content-layout {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  height: 100%;
+  padding-top: 8rem;
+}
+
+/* Left Column: Summary */
+.left-column {
+  flex: 1;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+}
+
+/* Middle Column: Book Card */
+.middle-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-card-large {
+  width: 300px;
+  height: 450px;
+  border: 2px solid white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  padding: 1rem;
+}
+
+/* Right Column: Extra Information */
+.right-column {
+  flex: 1;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+}
+
+.right-column h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.info-section {
+  margin-bottom: 1.5rem;
+}
+
+.info-section h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.info-section p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.info-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.info-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+/* Favorites page layout */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-height: 90%;
+  overflow-y: auto;
+  padding: 2rem;
+  border-radius: 10px;
+  scrollbar-width: none; /* Firefox */
+  position: relative;
+}
+
+.favorites-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Loading screen styles */
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  text-align: center;
+}
+
+.processing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  color: white;
+}
+
+.processing-status {
+  margin: 2rem 0;
+}
+
+.spinner {
+  border: 8px solid rgba(255,255,255,0.15);
+  border-top: 8px solid #fff;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  animation: spin 2s linear infinite;
+  margin: 0 auto 2rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.uploaded-image {
+  margin-top: 2rem;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.preview-img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.error-message {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+/* Stars rating styles */
+.stars-container {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.star {
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+.star.filled {
+  color: gold;
+}
+
+/* Similar books section */
+.similar-books-section {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid #333;
+}
+
+.similar-books-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.similar-book-item {
+  width: 120px;
+  text-align: center;
+}
+
+.similar-book-item a {
+  text-decoration: none;
+}
+
+.similar-book-item img {
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.similar-book-item p {
+  color: white;
+  font-size: 12px;
+  margin-top: 5px;
+  line-height: 1.2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content-layout {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .recommendation-layout {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .left-scrollable, .right-fixed {
+    flex: none;
+  }
+  
+  .book-card {
+    width: 150px;
+    height: 250px;
+  }
+  
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+}

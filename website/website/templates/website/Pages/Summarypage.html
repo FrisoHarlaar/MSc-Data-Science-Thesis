@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ book.title }} - Novelscape Inspiration{% endblock %}
+
+{% block body_class %}book-detail-page{% endblock %}
+
+{% block content %}
+    <div class="content-layout">
+    <!-- Left Column: Summary -->
+    <div class="left-column">
+      <h1>SUMMARY</h1>
+        {% if book.description %}
+            <p>{{ book.description|linebreaks }}</p>
+        {% else %}
+            <p>No description available for this book. This book is part of our collection and may contain rich storytelling and compelling characters that will engage readers.</p>
+        {% endif %}   
+    </div>
+
+    <!-- Middle Column: Book Card -->
+    <div class="middle-column">
+    <div class="book-card-large" style="position: relative; border: 2px solid white; border-radius: 10px; padding: 1rem; text-align: center;">
+        <!-- Add Icon -->
+        <div class="add-icon-container" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">
+        <button class="add-icon-btn" style="background: none; border: none; cursor: pointer;">
+            <img 
+            src="../PagesICONS/Add Icon.png" 
+            data-hover="../PagesICONS/Add Icon Alternate.png" 
+            data-src="../PagesICONS/Add Icon.png" 
+            alt="Add Icon" 
+            class="add-icon hover-swap" 
+            style="width: 30px; height: 30px;" />
+        </button>
+        </div>
+        <!-- Book Image -->
+        <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+          {% if book.image_url_large %}
+              <img src="{{ book.image_url_large }}" alt="Cover of {{ book.title }}" 
+                    style="max-height: 100%; object-fit: contain;">
+          {% elif book.image_url %}
+              <img src="{{ book.image_url }}" alt="Cover of {{ book.title }}" 
+                    style="max-height: 100%; object-fit: contain;">
+          {% else %}
+              <div style="width: 200px; height: 300px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc;">
+                  <p style="color: #666; text-align: center;">No Cover<br>Available</p>
+              </div>
+          {% endif %}
+        </div>
+    </div>
+    </div>
+
+    <!-- Right Column: Extra Information -->
+    <div class="right-column">
+        <h1>INFORMATION</h1>
+            <div class="info-section">
+            <div class="info-item">
+                <img src="../PagesICONS/Writer Icon.png" alt="Writer Icon" class="info-icon" />
+                <div>
+                <h3>WRITER</h3>
+                <p>Name of the writer here...</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="info-section">
+            <div class="info-item">
+                <img src="../PagesICONS/ISBN Icon.png" alt="ISBN Icon" class="info-icon" />
+                <div>
+                <h3>ISBN</h3>
+                <p>The book ISBN number here...</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="info-section">
+            <div class="info-item">
+                <img src="../PagesICONS/Language Icon.png" alt="Language Icon" class="info-icon" />
+                <div>
+                <h3>LANGUAGE</h3>
+                <p>Language of the book here...</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="info-section">
+            <div class="info-item">
+                <img src="../PagesICONS/Category Icon.png" alt="Category Icon" class="info-icon" />
+                <div>
+                <h3>CATEGORY</h3>
+                <p>Name of categories here...</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="info-section">
+            <div class="info-item">
+                <img src="../PagesICONS/Mood Icon.png" alt="Mood Icon" class="info-icon" />
+                <div>
+                <h3>MOOD</h3>
+                <p>Name of moods here...</p>
+                </div>
+  </div>
+</div>
+    </div>
+    </div>
+
+
+    </div>
+  </div>
+  <script src="../PagesJAVASCRIPT/Scripts.js"></script>
+</body>
+</html>
+
+</body>
+</html>

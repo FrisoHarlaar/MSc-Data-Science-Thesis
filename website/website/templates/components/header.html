@@ -1,0 +1,31 @@
+{% load static %}
+
+<header class="header2">
+    <div class="header-left-icons" style="display: flex; align-items: center; gap: 10px;">
+        <a href="#" onclick="history.back(); return false;" aria-label="Go back">
+            <img src="{% static 'images/icons/back-icon.png' %}"
+                 data-hover="{% static 'images/icons/back-icon-alternate.png' %}"
+                 data-src="{% static 'images/icons/back-icon.png' %}"
+                 alt="Back Icon"
+                 class="header-icon hover-swap" />
+        </a>
+
+        <a href="/">
+            <img src="{% static 'images/icons/home-icon.png' %}"
+                 data-hover="{% static 'images/icons/home-icon-alternate.png' %}"
+                 data-src="{% static 'images/icons/home-icon.png' %}"
+                 alt="Home Icon"
+                 class="header-icon hover-swap" />
+        </a>
+
+        <!-- Divider -->
+        <div style="width: 2px; height: 50px; background-color: white; margin: 0 15px;"></div>
+
+        <a href="{% url 'wagtailadmin_login' %}" class="login-btn" style="margin-left: 10px;">
+            <span class="login"></span>
+            Login
+        </a>
+    </div>
+
+    <img src="{% static 'images/novelscape-logo.png' %}" alt="Novelscape Logo" class="header-logo" />
+</header>

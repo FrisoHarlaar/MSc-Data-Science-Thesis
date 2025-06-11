@@ -9,6 +9,8 @@ pandas==2.2.3
 # https://github.com/pgvector/pgvector-python?tab=readme-ov-file#django
 pgvector==0.4.1
 
+-e git+https://github.com/optas/artemis.git@master#egg=artemis
+
 #####
 # For EmotionCLIP
 #####

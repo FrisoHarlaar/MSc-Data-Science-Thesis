@@ -4,6 +4,7 @@ data/
 backups/
 *.parquet*
 media/
+website/models/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

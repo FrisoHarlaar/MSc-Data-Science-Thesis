@@ -1,0 +1,28 @@
+{% load static %}
+<div class="book-card">
+    <div class="add-icon-container">
+        <button class="add-icon-btn">
+            <img src="{% static 'images/icons/add-icon.png' %}"
+                 data-hover="{% static 'images/icons/add-icon-alternate.png' %}"
+                 data-src="{% static 'images/icons/add-icon.png' %}"
+                 alt="Add Icon"
+                 class="add-icon hover-swap" />
+        </button>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+        {% if book.image_url_large %}
+            <img src="{{ book.image_url_large }}" alt="{{ book.title }}" class="cover-img">
+        {% elif book.image_url %}
+            <img src="{{ book.image_url }}" alt="{{ book.title }}" class="cover-img">
+        {% else %}
+            <div class="cover-placeholder">
+                <p>No Cover Available</p>
+            </div>
+        {% endif %}
+    </div>
+    
+    <a href="{% url 'book_detail' pk=book.pk %}" class="card-btn">
+        <span class="glow"></span>
+        More Info
+    </a>
+</div>
