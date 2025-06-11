@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ user.username }}'s Profile - Novelscape{% endblock %}
+
+{% block body_class %}user-profile-page{% endblock %}
+
+{% block content %}
+<div class="cards-container">
+    <!-- First Card -->
+    <div class="card">
+        <div style="text-align: center; margin-bottom: 1rem; padding-top: 4rem;">
+            <img src="{% static 'images/account-icon.png' %}" alt="Account Icon"/>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'users:settings' %}" class="card-btn">Settings</a>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div style="
+        width: 2px; 
+        height: 400px; 
+        background-color: white; 
+        margin: 0 15px;">
+    </div>
+
+    <!-- Second Card -->
+    <div class="card">
+        <div style="text-align: center; margin-bottom: 1rem; padding-top: 4rem;">
+            <img src="{% static 'images/favorites-icon.png' %}" alt="Favorites Icon"/>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'users:favorites' %}" class="card-btn">Favorites</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

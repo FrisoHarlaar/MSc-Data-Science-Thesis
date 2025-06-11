@@ -12,7 +12,7 @@
     {% if error %}
         <div class="error-message">
             <p>Error processing image: {{ error }}</p>
-            <a href="{% url 'image_search' %}" class="login-btn">Try Again</a>
+            <a href="{% url 'books:upload_image' %}" class="login-btn">Try Again</a>
         </div>
     {% else %}
         <!-- Simple meta refresh - reloads page every 2 seconds -->

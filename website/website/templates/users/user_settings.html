@@ -1,0 +1,41 @@
+home/friso/code/MSc-Data-Science-Thesis/website/website/templates/users/user_settings.html
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Account Settings - Novelscape{% endblock %}
+{% block body_class %}change-account-settings-page{% endblock %}
+
+{% block content %}
+<div class="cards-container">
+    <div class="card-wide">
+        <h2>Change Your Account Settings</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- User account fields -->
+            <input type="email" 
+                   name="email" 
+                   value="{{ user.email }}" 
+                   placeholder="Email Address" 
+                   class="input-field" />
+            
+            <input type="text" 
+                   name="username" 
+                   value="{{ user.username }}" 
+                   placeholder="Username" 
+                   class="input-field" />
+            
+            <div class="button-container">
+                <button type="submit" class="login-btn" style="margin-left: 10px;">
+                    <span class="login"></span>
+                    Save
+                </button>
+                <a href="{% url 'users:profile' %}" class="login-btn" style="margin-left: 10px;">
+                    <span class="login"></span>
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

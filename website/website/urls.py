@@ -9,11 +9,15 @@ from wagtail.documents import urls as wagtaildocs_urls
 from search import views as search_views
 
 urlpatterns = [
+    path("", include("home.urls")), 
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
-    path("", include("books.urls")),  # Include the books app URLs
+    path("books/", include("books.urls")),  # Include the books app URLs
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("users/", include("users.urls")),  # Include the users app URLs
 ]
 
 

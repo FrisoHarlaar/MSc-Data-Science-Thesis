@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Favorites - Novelscape{% endblock %}
+
+{% block body_class %}favorites-page{% endblock %}
+
+{% block content %}
+
+<div class="recommendation-layout">
+    <div class="favorites-grid">
+        {% if favorite_books %}
+            {% for book in favorite_books %}
+                <div class="book-card">
+                    <div class="add-icon-container">
+                        <button class="add-icon-btn" data-book-id="{{ book.id }}">
+                            <img 
+                                src="{% static 'images/remove-icon.png' %}" 
+                                data-hover="{% static 'images/remove-icon-alternate.png' %}" 
+                                data-src="{% static 'images/remove-icon.png' %}" 
+                                alt="Remove from Favorites" 
+                                class="add-icon hover-swap" />
+                        </button>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                        {% if book.cover_image %}
+                            <img src="{{ book.cover_image.url }}" alt="{{ book.title }} cover" style="max-width: 100%; max-height: 200px; object-fit: contain;">
+                        {% else %}
+                            <p>{{ book.title }}</p>
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'books:detail' book.slug %}" class="card-btn">
+                        <span class="glow"></span>More Info
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <!-- Empty state when no favorites -->
+            <div style="grid-column: 1 / -1; text-align: center; padding: 4rem;">
+                <h2 style="color: white; margin-bottom: 2rem;">No Favorite Books Yet</h2>
+                <p style="color: white; margin-bottom: 2rem;">Start adding books to your favorites to see them here!</p>
+                <a href="{% url 'books:search' %}" class="card-btn">
+                    <span class="glow"></span>Browse Books
+                </a>
+            </div>
+        {% endif %}
+
+        <!-- Add placeholder cards to fill the grid if needed -->
+        {% if favorite_books|length < 14 %}
+            {% for i in "123456789012345"|slice:":14" %}
+                {% if forloop.counter0|add:favorite_books|length < 14 %}
+                    <div class="book-card" style="opacity: 0.3;">
+                        <div class="add-icon-container">
+                            <button class="add-icon-btn" disabled>
+                                <img 
+                                    src="{% static 'images/add-icon.png' %}" 
+                                    data-hover="{% static 'images/add-icon-alternate.png' %}" 
+                                    data-src="{% static 'images/add-icon.png' %}" 
+                                    alt="Add Icon" 
+                                    class="add-icon hover-swap" />
+                            </button>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                            <p style="color: #666;">Add more books</p>
+                        </div>
+                        <a href="{% url 'books:search' %}" class="card-btn">
+                            <span class="glow"></span>Browse Books
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+<script>
+// Handle favorite removal
+document.addEventListener('DOMContentLoaded', function() {
+    const removeButtons = document.querySelectorAll('.add-icon-btn[data-book-id]');
+    
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const bookId = this.getAttribute('data-book-id');
+            
+            // Send AJAX request to remove from favorites
+            fetch(`{% url 'users:remove_favorite' %}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: JSON.stringify({ book_id: bookId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Reload the page to update the favorites list
+                    location.reload();
+                } else {
+                    alert('Error removing book from favorites');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error removing book from favorites');
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

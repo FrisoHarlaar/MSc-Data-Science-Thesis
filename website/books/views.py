@@ -142,7 +142,7 @@ class ImageSearchView(FormView):
             logger.info(f"Async processing started with request_id: {request_id}")
             
             # Redirect to processing page with the request ID and image ID
-            redirect_url = reverse('image_search_processing') + f'?request_id={request_id}&image_id={user_image.uuid}&limit={limit}'
+            redirect_url = reverse('books:image_search_processing') + f'?request_id={request_id}&image_id={user_image.uuid}&limit={limit}'
             logger.info(f"Redirecting to: {redirect_url}")
             
             return redirect(redirect_url)
@@ -165,7 +165,7 @@ class ImageProcessingView(FormView):
         
         if not request_id or not image_id:
             logger.warning("Missing request_id or image_id in processing view")
-            return redirect('image_search')
+            return redirect('books:upload_image')
         
         try:
             user_image = UserImage.objects.get(uuid=image_id)
@@ -205,7 +205,7 @@ class ImageProcessingView(FormView):
                 request.session['limit'] = limit
                 
                 # Skip loading screen and go directly to recommendations
-                return redirect('book_recommendations')
+                return redirect('books:book_recommendations')
             else:
                 # Still processing - show loading page with auto-refresh
                 logger.info("Still processing, showing loading screen")
@@ -222,10 +222,10 @@ class ImageProcessingView(FormView):
                 
         except UserImage.DoesNotExist:
             logger.error(f"UserImage not found: {image_id}")
-            return redirect('image_search')
+            return redirect('books:upload_image')
         except Exception as e:
             logger.exception(f"Error in image processing view: {e}")
-            return redirect('image_search')
+            return redirect('books:upload_image')
 
 class BookRecommendationsView(TemplateView):
     """View to display book recommendations based on emotion analysis"""
@@ -239,7 +239,7 @@ class BookRecommendationsView(TemplateView):
         
         if not emotion_result or not image_id:
             logger.warning("No emotion result or image_id in session, redirecting to image search")
-            return redirect('image_search')
+            return redirect('books:upload_image')
         
         try:
             user_image = UserImage.objects.get(uuid=image_id)
@@ -270,10 +270,10 @@ class BookRecommendationsView(TemplateView):
             
         except UserImage.DoesNotExist:
             logger.error(f"UserImage not found: {image_id}")
-            return redirect('image_search')
+            return redirect('books:upload_image')
         except Exception as e:
             logger.exception(f"Error in recommendations view: {e}")
-            return redirect('image_search')
+            return redirect('books:upload_image')
     
     def find_similar_books_by_emotion(self, emotion_distribution, limit=6):
         """Find books similar to the given emotion distribution"""

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+    
+{% block title %}Sign In or Register - Novelscape{% endblock %}
+{% block body_class %}registration-page{% endblock %}
+
+{% block content %}
+<div class="cards-container">
+    <!-- Sign In Card -->
+    <div class="card">
+        <h2>Sign In</h2>
+        <form method="post" action="{% url 'auth_login' %}">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" class="input-field" required />
+            <input type="password" name="password" placeholder="Password" class="input-field" required />
+            <a href="{% url 'auth_password_reset' %}" class="forgot-password">Forgot password?</a>
+            <div class="button-container">
+                <button type="submit" class="card-btn">Sign In</button>
+            </div>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+
+    <!-- Divider -->
+    <div style="
+        width: 2px; 
+        height: 400px; 
+        background-color: white; 
+        margin: 0 15px;">
+    </div>
+
+    <!-- Register Card -->
+    <div class="card">
+        <h2>Register</h2>
+        
+        {% if form.errors %}
+            <div class="error-messages" style="color: #ff6b6b; margin-bottom: 15px;">
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <p style="margin: 5px 0; font-size: 14px;">{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <form method="post" action="{% url 'django_registration_register' %}">
+            {% csrf_token %}
+            {{ form.email.as_hidden }}
+            <input type="email" 
+                   name="email" 
+                   placeholder="Email Address" 
+                   class="input-field" 
+                   value="{{ form.email.value|default:'' }}" 
+                   required />
+            
+            <input type="text" 
+                   name="username" 
+                   placeholder="Username" 
+                   class="input-field" 
+                   value="{{ form.username.value|default:'' }}" 
+                   required />
+            
+            <input type="password" 
+                   name="password1" 
+                   placeholder="Password" 
+                   class="input-field" 
+                   required />
+            
+            <input type="password" 
+                   name="password2" 
+                   placeholder="Confirm Password" 
+                   class="input-field" 
+                   required />
+            
+            <div class="button-container">
+                <button type="submit" class="card-btn">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
