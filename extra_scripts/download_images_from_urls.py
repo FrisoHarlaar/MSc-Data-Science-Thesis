@@ -2,20 +2,10 @@ import os
 import requests
 
 # List of image URLs
-urls = [
-    "https://uva.fra1.qualtrics.com/CP/Graphic.php?IM=IM_3ly3QjRjF9wU6vc",
-    "https://uva.fra1.qualtrics.com/CP/Graphic.php?IM=IM_b2vqHITA9jITeuy",
-    "https://uva.fra1.qualtrics.com/CP/Graphic.php?IM=IM_5gKHOiXDNgccIUC",
-    "https://uva.fra1.qualtrics.com/CP/Graphic.php?IM=IM_8HMIvQCyobAZL7w",
-    "https://uva.fra1.qualtrics.com/CP/Graphic.php?IM=IM_06wcuQzizRBPv4W",
-    "https://uva.fra1.qualtrics.com/CP/Graphic.php?IM=IM_5ihESCCOt6EoTCS",
-    "https://uva.fra1.qualtrics.com/CP/Graphic.php?IM=IM_85MzZ3DMlTpO3FI",
-    "https://uva.fra1.qualtrics.com/CP/Graphic.php?IM=IM_4PgKntGbNS9p7j8",
-    "https://uva.fra1.qualtrics.com/CP/Graphic.php?IM=IM_eeMsvdojMZlVE22"
-]
+urls = ['https://images.gr-assets.com/books/1450349679l/1442782.jpg', 'https://images.gr-assets.com/books/1356574564l/15870096.jpg', 'https://images.gr-assets.com/books/1328872691l/1816515.jpg', 'https://images.gr-assets.com/books/1356135542l/555274.jpg', 'https://images.gr-assets.com/books/1387790017l/1728883.jpg', 'https://images.gr-assets.com/books/1354931244l/15780375.jpg', 'https://images.gr-assets.com/books/1328837581l/6928833.jpg', 'https://images.gr-assets.com/books/1468992944l/30844277.jpg', 'https://images.gr-assets.com/books/1450000591l/25734081.jpg']
 
 # Target folder to save images
-folder_name = "downloaded_images_multimodal"
+folder_name = "downloaded_images_multimodal_good"
 os.makedirs(folder_name, exist_ok=True)
 
 # Download and save each image

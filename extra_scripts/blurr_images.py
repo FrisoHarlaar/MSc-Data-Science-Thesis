@@ -5,7 +5,7 @@ import easyocr
 from pathlib import Path
 
 # Set your folders here
-input_folder = Path("downloaded_images_multimodal")
+input_folder = Path("downloaded_images_resnet_good")
 output_folder = input_folder / "blurred_easyocr"
 output_folder.mkdir(exist_ok=True)
 
