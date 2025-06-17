@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
+    'registration',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -85,6 +86,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "website.wsgi.application"
+
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

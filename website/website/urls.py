@@ -14,6 +14,7 @@ urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
+    path('accounts/', include('registration.backends.default.urls')),
     path("books/", include("books.urls")),  # Include the books app URLs
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path("accounts/", include("django.contrib.auth.urls")),
