@@ -1,30 +1,30 @@
 {
   "input_image": {
     "dominant_emotion": "sadness",
-    "confidence": 0.33991244435310364,
+    "confidence": 0.3398641347885132,
     "emotion_distribution": {
-      "amusement": 0.05117500200867653,
-      "awe": 0.13474160432815552,
-      "contentment": 0.18510529398918152,
-      "excitement": 0.04031267762184143,
-      "anger": 0.034252189099788666,
-      "disgust": 0.07360052317380905,
-      "fear": 0.0915139839053154,
-      "sadness": 0.33991244435310364,
-      "something else": 0.049386270344257355
+      "amusement": 0.051172010600566864,
+      "awe": 0.13477137684822083,
+      "contentment": 0.18514327704906464,
+      "excitement": 0.04031547158956528,
+      "anger": 0.03424745798110962,
+      "disgust": 0.07359041273593903,
+      "fear": 0.09151237457990646,
+      "sadness": 0.3398641347885132,
+      "something else": 0.04938337206840515
     },
     "top_3_emotions": [
       {
         "emotion": "sadness",
-        "probability": 0.33991244435310364
+        "probability": 0.3398641347885132
       },
       {
         "emotion": "contentment",
-        "probability": 0.18510529398918152
+        "probability": 0.18514327704906464
       },
       {
         "emotion": "awe",
-        "probability": 0.13474160432815552
+        "probability": 0.13477137684822083
       }
     ]
   },
@@ -35,9 +35,9 @@
           "rank": 1,
           "title": "Dreamless",
           "book_id": "9330885",
-          "similarity_score": 0.9975203275680542,
-          "cosine_similarity": 0.9975201487541199,
-          "kl_divergence": 0.005248054396361113,
+          "similarity_score": 0.9975175857543945,
+          "cosine_similarity": 0.9975175857543945,
+          "kl_divergence": 0.005251660477370024,
           "dominant_emotion": "sadness",
           "emotion_distribution": {
             "amusement": 0.0631449818611145,
@@ -65,24 +65,24 @@
             }
           ],
           "emotion_differences": {
-            "amusement": 0.011969979852437973,
-            "awe": -0.021634161472320557,
-            "contentment": 0.006154090166091919,
-            "excitement": -0.002075508236885071,
-            "anger": -0.0025663599371910095,
-            "disgust": -0.011016227304935455,
-            "fear": 0.011402755975723267,
-            "sadness": 0.0026818811893463135,
-            "something else": 0.00508354976773262
+            "amusement": 0.011972971260547638,
+            "awe": -0.021663933992385864,
+            "contentment": 0.006116107106208801,
+            "excitement": -0.0020783022046089172,
+            "anger": -0.002561628818511963,
+            "disgust": -0.01100611686706543,
+            "fear": 0.011404365301132202,
+            "sadness": 0.0027301907539367676,
+            "something else": 0.005086448043584824
           }
         },
         {
           "rank": 2,
           "title": "Runaway!",
           "book_id": "14402305",
-          "similarity_score": 0.9974592924118042,
-          "cosine_similarity": 0.9974592328071594,
-          "kl_divergence": 0.005692478269338608,
+          "similarity_score": 0.9974625706672668,
+          "cosine_similarity": 0.9974626302719116,
+          "kl_divergence": 0.0056892940774559975,
           "dominant_emotion": "sadness",
           "emotion_distribution": {
             "amusement": 0.06026404723525047,
@@ -110,24 +110,24 @@
             }
           ],
           "emotion_differences": {
-            "amusement": 0.009089045226573944,
-            "awe": -0.008426740765571594,
-            "contentment": 0.017597243189811707,
-            "excitement": -0.0020997971296310425,
-            "anger": -0.002631518989801407,
-            "disgust": -0.013738267123699188,
-            "fear": -0.010822460055351257,
-            "sadness": -0.002497375011444092,
-            "something else": 0.013529881834983826
+            "amusement": 0.009092036634683609,
+            "awe": -0.008456513285636902,
+            "contentment": 0.01755926012992859,
+            "excitement": -0.002102591097354889,
+            "anger": -0.0026267878711223602,
+            "disgust": -0.013728156685829163,
+            "fear": -0.010820850729942322,
+            "sadness": -0.0024490654468536377,
+            "something else": 0.013532780110836029
           }
         },
         {
           "rank": 3,
           "title": "Bengali Girls Don't",
           "book_id": "12078346",
-          "similarity_score": 0.9971522092819214,
-          "cosine_similarity": 0.9971522688865662,
-          "kl_divergence": 0.007161891087889671,
+          "similarity_score": 0.9971540570259094,
+          "cosine_similarity": 0.9971540570259094,
+          "kl_divergence": 0.00716007687151432,
           "dominant_emotion": "sadness",
           "emotion_distribution": {
             "amusement": 0.05611968785524368,
@@ -155,15 +155,15 @@
             }
           ],
           "emotion_differences": {
-            "amusement": 0.004944685846567154,
-            "awe": -0.010207019746303558,
-            "contentment": 0.0036352723836898804,
-            "excitement": 0.00057244673371315,
-            "anger": -0.004863301292061806,
-            "disgust": -0.016050945967435837,
-            "fear": 0.01444261521100998,
-            "sadness": -0.011147111654281616,
-            "something else": 0.0186733677983284
+            "amusement": 0.004947677254676819,
+            "awe": -0.010236792266368866,
+            "contentment": 0.0035972893238067627,
+            "excitement": 0.0005696527659893036,
+            "anger": -0.004858570173382759,
+            "disgust": -0.01604083552956581,
+            "fear": 0.014444224536418915,
+            "sadness": -0.011098802089691162,
+            "something else": 0.018676266074180603
           }
         }
       ]
@@ -174,9 +174,9 @@
           "rank": 1,
           "title": "The O’Rahilly: A Secret History of the Rebellion of 1916",
           "book_id": "29505492",
-          "similarity_score": 0.9943222999572754,
-          "cosine_similarity": 0.9943224191665649,
-          "kl_divergence": 0.020438963547348976,
+          "similarity_score": 0.9943166375160217,
+          "cosine_similarity": 0.9943166375160217,
+          "kl_divergence": 0.0204436257481575,
           "dominant_emotion": "sadness",
           "emotion_distribution": {
             "amusement": 0.031239677220582962,
@@ -204,24 +204,24 @@
             }
           ],
           "emotion_differences": {
-            "amusement": -0.019935324788093567,
-            "awe": 0.0031446218490600586,
-            "contentment": -0.02002701163291931,
-            "excitement": 0.01494777575135231,
-            "anger": 0.026062820106744766,
-            "disgust": 0.008025527000427246,
-            "fear": -0.0008900538086891174,
-            "sadness": 0.006892502307891846,
-            "something else": -0.018220871686935425
+            "amusement": -0.019932333379983902,
+            "awe": 0.003114849328994751,
+            "contentment": -0.02006499469280243,
+            "excitement": 0.014944981783628464,
+            "anger": 0.026067551225423813,
+            "disgust": 0.008035637438297272,
+            "fear": -0.0008884444832801819,
+            "sadness": 0.0069408118724823,
+            "something else": -0.01821797341108322
           }
         },
         {
           "rank": 2,
           "title": "Yosl Rakover Talks to God",
           "book_id": "1411357",
-          "similarity_score": 0.9933139681816101,
-          "cosine_similarity": 0.9933139085769653,
-          "kl_divergence": 0.011496944352984428,
+          "similarity_score": 0.9933015704154968,
+          "cosine_similarity": 0.9933017492294312,
+          "kl_divergence": 0.011507567018270493,
           "dominant_emotion": "sadness",
           "emotion_distribution": {
             "amusement": 0.045209288597106934,
@@ -249,24 +249,24 @@
             }
           ],
           "emotion_differences": {
-            "amusement": -0.005965713411569595,
-            "awe": -0.030508726835250854,
-            "contentment": -0.0007380843162536621,
-            "excitement": 0.0029708892107009888,
-            "anger": 0.006390795111656189,
-            "disgust": -0.01712072640657425,
-            "fear": 0.011950820684432983,
-            "sadness": 0.041951894760131836,
-            "something else": -0.008931145071983337
+            "amusement": -0.00596272200345993,
+            "awe": -0.030538499355316162,
+            "contentment": -0.0007760673761367798,
+            "excitement": 0.0029680952429771423,
+            "anger": 0.006395526230335236,
+            "disgust": -0.017110615968704224,
+            "fear": 0.011952430009841919,
+            "sadness": 0.04200020432472229,
+            "something else": -0.008928246796131134
           }
         },
         {
           "rank": 3,
           "title": "We Gon' Be Alright: Notes on Race and Resegregation",
           "book_id": "28595947",
-          "similarity_score": 0.9931026697158813,
-          "cosine_similarity": 0.9931027293205261,
-          "kl_divergence": 0.01697791926562786,
+          "similarity_score": 0.9930918216705322,
+          "cosine_similarity": 0.9930918216705322,
+          "kl_divergence": 0.01699075475335121,
           "dominant_emotion": "sadness",
           "emotion_distribution": {
             "amusement": 0.03464535251259804,
@@ -294,15 +294,15 @@
             }
           ],
           "emotion_differences": {
-            "amusement": -0.01652964949607849,
-            "awe": -0.015428029000759125,
-            "contentment": -0.009857982397079468,
-            "excitement": -0.0051417723298072815,
-            "anger": 0.017897892743349075,
-            "disgust": 0.031008906662464142,
-            "fear": -0.019595839083194733,
-            "sadness": 0.02189183235168457,
-            "something else": -0.004245329648256302
+            "amusement": -0.016526658087968826,
+            "awe": -0.015457801520824432,
+            "contentment": -0.009895965456962585,
+            "excitement": -0.005144566297531128,
+            "anger": 0.017902623862028122,
+            "disgust": 0.031019017100334167,
+            "fear": -0.019594229757785797,
+            "sadness": 0.021940141916275024,
+            "something else": -0.0042424313724040985
           }
         }
       ]
@@ -313,9 +313,9 @@
           "rank": 1,
           "title": "The Long March: The true story behind the legendary journey that made Mao's China",
           "book_id": "1442782",
-          "similarity_score": 0.9980773329734802,
-          "cosine_similarity": 0.998077392578125,
-          "kl_divergence": 0.006392747163772583,
+          "similarity_score": 0.9980793595314026,
+          "cosine_similarity": 0.9980794191360474,
+          "kl_divergence": 0.0063900090754032135,
           "dominant_emotion": "sadness",
           "emotion_distribution": {
             "amusement": 0.0599064864218235,
@@ -343,24 +343,24 @@
             }
           ],
           "emotion_differences": {
-            "amusement": 0.008731484413146973,
-            "awe": -0.0003247112035751343,
-            "contentment": 0.006358295679092407,
-            "excitement": -0.004250790923833847,
-            "anger": 0.006307356059551239,
-            "disgust": -0.015249699354171753,
-            "fear": 0.012349255383014679,
-            "sadness": -0.00046768784523010254,
-            "something else": -0.013453476130962372
+            "amusement": 0.008734475821256638,
+            "awe": -0.0003544837236404419,
+            "contentment": 0.0063203126192092896,
+            "excitement": -0.0042535848915576935,
+            "anger": 0.006312087178230286,
+            "disgust": -0.015239588916301727,
+            "fear": 0.012350864708423615,
+            "sadness": -0.00041937828063964844,
+            "something else": -0.013450577855110168
           }
         },
         {
           "rank": 2,
           "title": "Summer of Hope",
           "book_id": "15870096",
-          "similarity_score": 0.9968357682228088,
-          "cosine_similarity": 0.9968357682228088,
-          "kl_divergence": 0.006353879347443581,
+          "similarity_score": 0.9968336820602417,
+          "cosine_similarity": 0.9968336820602417,
+          "kl_divergence": 0.006355801597237587,
           "dominant_emotion": "sadness",
           "emotion_distribution": {
             "amusement": 0.054601218551397324,
@@ -388,24 +388,24 @@
             }
           ],
           "emotion_differences": {
-            "amusement": 0.0034262165427207947,
-            "awe": -0.024112649261951447,
-            "contentment": 0.012118905782699585,
-            "excitement": 0.00632752850651741,
-            "anger": 0.00044801458716392517,
-            "disgust": -0.01646542176604271,
-            "fear": 0.011814557015895844,
-            "sadness": 0.007174313068389893,
-            "something else": -0.0007314495742321014
+            "amusement": 0.0034292079508304596,
+            "awe": -0.024142421782016754,
+            "contentment": 0.012080922722816467,
+            "excitement": 0.006324734538793564,
+            "anger": 0.0004527457058429718,
+            "disgust": -0.016455311328172684,
+            "fear": 0.011816166341304779,
+            "sadness": 0.007222622632980347,
+            "something else": -0.0007285512983798981
           }
         },
         {
           "rank": 3,
           "title": "Smoldering City: Chicagoans and the Great Fire, 1871-1874",
           "book_id": "1816515",
-          "similarity_score": 0.9954131245613098,
-          "cosine_similarity": 0.995413064956665,
-          "kl_divergence": 0.011394498869776726,
+          "similarity_score": 0.9954103231430054,
+          "cosine_similarity": 0.9954102635383606,
+          "kl_divergence": 0.011399947106838226,
           "dominant_emotion": "sadness",
           "emotion_distribution": {
             "amusement": 0.05976947396993637,
@@ -433,15 +433,15 @@
             }
           ],
           "emotion_differences": {
-            "amusement": 0.008594471961259842,
-            "awe": -0.027454115450382233,
-            "contentment": 0.005763456225395203,
-            "excitement": 0.006544806063175201,
-            "anger": 0.011341027915477753,
-            "disgust": -0.012493640184402466,
-            "fear": -0.009776376187801361,
-            "sadness": -0.0038591325283050537,
-            "something else": 0.021339572966098785
+            "amusement": 0.008597463369369507,
+            "awe": -0.02748388797044754,
+            "contentment": 0.005725473165512085,
+            "excitement": 0.006542012095451355,
+            "anger": 0.0113457590341568,
+            "disgust": -0.01248352974653244,
+            "fear": -0.009774766862392426,
+            "sadness": -0.0038108229637145996,
+            "something else": 0.02134247124195099
           }
         }
       ]
