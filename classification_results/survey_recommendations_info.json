@@ -1,0 +1,638 @@
+{
+  "image_prediction": {
+    "emotion_distribution": [
+      0.051172010600566864,
+      0.13477137684822083,
+      0.18514327704906464,
+      0.04031547158956528,
+      0.03424745798110962,
+      0.07359041273593903,
+      0.09151237457990646,
+      0.3398641347885132,
+      0.04938337206840515
+    ],
+    "confidence": 0.3398641347885132,
+    "dominant_emotion": "sadness",
+    "emotion_scores": {
+      "amusement": 0.051172010600566864,
+      "awe": 0.13477137684822083,
+      "contentment": 0.18514327704906464,
+      "excitement": 0.04031547158956528,
+      "anger": 0.03424745798110962,
+      "disgust": 0.07359041273593903,
+      "fear": 0.09151237457990646,
+      "sadness": 0.3398641347885132,
+      "something else": 0.04938337206840515
+    }
+  },
+  "processing_time": 0.31943249702453613,
+  "total_books_analyzed": 686907,
+  "resnet_recommendations": {
+    "top": [
+      {
+        "rank": 1,
+        "book_id": "9330885",
+        "title": "Dreamless",
+        "authors": [
+          {
+            "author_id": "2358626",
+            "role": ""
+          },
+          {
+            "author_id": "512445",
+            "role": "Illustrator"
+          }
+        ],
+        "average_rating": 3.92,
+        "similarity_score": 0.9975175857543945,
+        "approach": "ResNet",
+        "category": "top",
+        "global_rank": 1,
+        "resnet_predicted_emotion": "sadness",
+        "bert_predicted_emotion": "something else",
+        "image_url_large": "https://images.gr-assets.com/books/1290170247l/9330885.jpg",
+        "description": "A World War II romance about an American girl and a Japanese boy who have seen each other's lives in their sleep since birth. This is a 72-page, FULL COLOR graphic novel collecting the complete acclaimed DREAMLESS story in one handy printed volume! Written by MARRY ME and LAST BLOOD author Bobby Crosby, and beautifully painted by THE PHOENIX REQUIEM creator Sarah Ellerton."
+      },
+      {
+        "rank": 2,
+        "book_id": "14402305",
+        "title": "Runaway!",
+        "authors": [
+          {
+            "author_id": "6025490",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.12,
+        "similarity_score": 0.9974625706672668,
+        "approach": "ResNet",
+        "category": "top",
+        "global_rank": 2,
+        "resnet_predicted_emotion": "sadness",
+        "bert_predicted_emotion": "sadness",
+        "image_url_large": "https://images.gr-assets.com/books/1340031123l/14402305.jpg",
+        "description": "Out of print\nA runaway slave boy, the Underground Railroad, a land without shadows. Robbed of his emancipation by his master's widow, a literate 14-year-old slave boy flees into the prairie. His journey crosses a territory ripped apart in conflict over slavery: stolen elections, printing presses thrown in the river, church houses nailed shut. But folk stories and campfire songs help him find conductors on the Underground Railroad. Slavecatchers dog his trail, but before the runaway can cross the river to freedom, he must first place his faith in an illiterate freewoman."
+      },
+      {
+        "rank": 3,
+        "book_id": "12078346",
+        "title": "Bengali Girls Don't",
+        "authors": [
+          {
+            "author_id": "1947044",
+            "role": ""
+          }
+        ],
+        "average_rating": 3.18,
+        "similarity_score": 0.9971540570259094,
+        "approach": "ResNet",
+        "category": "top",
+        "global_rank": 3,
+        "resnet_predicted_emotion": "sadness",
+        "bert_predicted_emotion": "sadness",
+        "image_url_large": "https://images.gr-assets.com/books/1313500615l/12078346.jpg",
+        "description": "Based on a True Story:\nBorn in a remote village during her country's liberation war, a Bangladeshi girl moves to England with her parents and struggles for freedom and identity while growing up in a mixed neighborhood. Caught between the world of her white friends and that of her parents, she scraps her Muslim gear for blue jeans and runs away with her boyfriend.\nBut when her father tracks her down and finds her, he tricks her into going to Bangladesh so that he can marry her off.\nIn Bangladesh, she is faced with a choice: get married or never go home.\nIt's an unforgettable true story about heartache and irony. About broken dreams. And how the life we choose is not always the life that chooses us.\nABOUT THE AUTHOR\nL.A. Sherman grew up in Bradford, England where she learned how to sneak out of the house without making the door creak. At the age of fifteen, she was tricked into going to Bangladesh by her parents and forced to marry a man as old as her father. After four years there with a wicked mother-in-law, she won the visa lottery for America and moved to the Big Apple. Now hard at work on her second book, she lives in Tampa, Florida with her family near a pond full of gators and spends her time doing all the things that Bengali girls don't."
+      }
+    ],
+    "middle": [
+      {
+        "rank": 1,
+        "book_id": "19308342",
+        "title": "Clique Clique STOP",
+        "authors": [
+          {
+            "author_id": "5391542",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.5,
+        "similarity_score": 0.7420174479484558,
+        "approach": "ResNet",
+        "category": "middle",
+        "global_rank": 343453,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "sadness",
+        "image_url_large": "https://images.gr-assets.com/books/1386585006l/19308342.jpg",
+        "description": "The first day of school finally arrived, and boy was Isabella in for a shock! To her surprise all of the kids at her new school were not Mexican-American as she previously expected.\nIn fact, there were kids from all racial groups, but there was one problem: there were too many cliques, making it hard for Isabella to fit in.\nIsabella grew tired of seeing all the division and began a quest to form a heritage club so that all students could come together and learn about each other's heritages, likes, and dislikes.\nWho knows along the way they might find similarities."
+      },
+      {
+        "rank": 2,
+        "book_id": "13346464",
+        "title": "You Deserve Nothing",
+        "authors": [
+          {
+            "author_id": "4481447",
+            "role": ""
+          },
+          {
+            "author_id": "428160",
+            "role": "Narrator"
+          },
+          {
+            "author_id": "2104733",
+            "role": "Narrator"
+          },
+          {
+            "author_id": "41953",
+            "role": "Narrator"
+          }
+        ],
+        "average_rating": 3.6,
+        "similarity_score": 0.7420171499252319,
+        "approach": "ResNet",
+        "category": "middle",
+        "global_rank": 343454,
+        "resnet_predicted_emotion": "fear",
+        "bert_predicted_emotion": "disgust",
+        "image_url_large": "https://images.gr-assets.com/books/1344721731l/13346464.jpg",
+        "description": "William Silver is a talented and charismatic young teacher whose unconventional methods raise eyebrows among his colleagues and superiors. His students, however, are devoted to him. His teaching of Camus, Faulkner, Sartre, Keats, and other kindred souls breathes life into their sense of social justice and their capacities for philosophical and ethical thought. But unbeknownst to his adoring pupils, Silver proves incapable of living up to the ideals he encourages in others.\nEmotionally scarred by failures in his personal life and driven to distraction by the City of Light's overpowering carnality and beauty, Silver succumbs to a temptation that will change the course of his life. His fall will render him a criminal in the eyes of some and all too human in the eyes of others.\nIn Maksik's stylish prose, Paris is sensual, dazzling, and dangerously seductive. It serves as a fitting backdrop for a dramatic tale about the tension between desire and action, and about the complex relationship that exists between our public and private selves."
+      },
+      {
+        "rank": 3,
+        "book_id": "278056",
+        "title": "Goodbye Hangovers, Hello Life: Self-Help for Women",
+        "authors": [
+          {
+            "author_id": "161992",
+            "role": ""
+          },
+          {
+            "author_id": "3955490",
+            "role": ""
+          }
+        ],
+        "average_rating": 3.5,
+        "similarity_score": 0.7420169711112976,
+        "approach": "ResNet",
+        "category": "middle",
+        "global_rank": 343455,
+        "resnet_predicted_emotion": "awe",
+        "bert_predicted_emotion": "sadness",
+        "image_url_large": "https://images.gr-assets.com/books/1355050076l/278056.jpg",
+        "description": "In Goodbye Hangovers, Hello Life, the first book on recovery specifically for women, Jean Kirkpatrick tells how she achieved sobriety. She explains the special problems of the woman alcoholic, and challenges some of the premises of Alcoholics Anonymous, an organization founded by and for men that she believes fails to address the specific needs of women. Instead of harping on past problems and behavior, the Women For Sobriety program focuses on the future, showing women how to build up their emotional strength, self-esteem, and positive approach to life essential to recovery."
+      }
+    ],
+    "bottom": [
+      {
+        "rank": 1,
+        "book_id": "18663384",
+        "title": "Green Comet",
+        "authors": [
+          {
+            "author_id": "7339395",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.5,
+        "similarity_score": 0.40093451738357544,
+        "approach": "ResNet",
+        "category": "bottom",
+        "global_rank": 686905,
+        "resnet_predicted_emotion": "fear",
+        "bert_predicted_emotion": "excitement",
+        "image_url_large": "https://images.gr-assets.com/books/1381565460l/18663384.jpg",
+        "description": "Green Cometis an expansive story of love and adventure on an inhabited comet. Elgin and Frances lead the synesthetic inhabitants of Green Comet on a long and hazardous crossing of interstellar space. In the millennia that follow, the comet people have many adventures. It's a novel released under a Creative Commons attribution and share alike license (CC-BY-SA) in 2012. In addition to various text formats, it's also available as a reading."
+      },
+      {
+        "rank": 2,
+        "book_id": "7901182",
+        "title": "The Sea",
+        "authors": [
+          {
+            "author_id": "11346",
+            "role": ""
+          },
+          {
+            "author_id": "919181",
+            "role": "Preface"
+          }
+        ],
+        "average_rating": 4.77,
+        "similarity_score": 0.3978178799152374,
+        "approach": "ResNet",
+        "category": "bottom",
+        "global_rank": 686906,
+        "resnet_predicted_emotion": "fear",
+        "bert_predicted_emotion": "contentment",
+        "image_url_large": "https://images.gr-assets.com/books/1327974189l/7901182.jpg",
+        "description": "A collection from one of the world's leading marine photographers. Plisson's favourite themes are seascapes, regattas of legendary tall ships, distant reefs, lighthouses and long-distance voyages."
+      },
+      {
+        "rank": 3,
+        "book_id": "173589",
+        "title": "When God is Silent: Choosing to Trust in Life's Trials",
+        "authors": [
+          {
+            "author_id": "5139",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.21,
+        "similarity_score": 0.3540714383125305,
+        "approach": "ResNet",
+        "category": "bottom",
+        "global_rank": 686907,
+        "resnet_predicted_emotion": "fear",
+        "bert_predicted_emotion": "contentment",
+        "image_url_large": "https://images.gr-assets.com/books/1355061113l/173589.jpg",
+        "description": "This positive book of encouragement and hope is compiled from text in the newly released Jobby best-selling author Charles Swindoll. His practical application of the Bible to everyday living makes God's truths a reality to people experiencing loss, uncertainty, and doubt. This book will be directed at a broad audience of both genders.\nThe object is to create a book that will provide encouragement, comfort and direction for the matrix of modern life. Based on guidelines gleaned from the life of Job, the book will focus on:\na) Seven things Job teaches us about ourselves\nb) Seven things Job teaches us about God"
+      }
+    ]
+  },
+  "bert_recommendations": {
+    "top": [
+      {
+        "rank": 1,
+        "book_id": "29505492",
+        "title": "The O’Rahilly: A Secret History of the Rebellion of 1916",
+        "authors": [
+          {
+            "author_id": "15082440",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.0,
+        "similarity_score": 0.9943166375160217,
+        "approach": "BERT",
+        "category": "top",
+        "global_rank": 1,
+        "resnet_predicted_emotion": "awe",
+        "bert_predicted_emotion": "sadness",
+        "image_url_large": "https://images.gr-assets.com/books/1457963343l/29505492.jpg",
+        "description": "The only leader of the 1916 Rising to be killed in action, Michael O'Rahilly died in a Dublin laneway after leading a charge against a British barricade in Moore Street. A letter to his wife, written during his last moments and pierced by the fatal bullet, was found in his breast pocket.\nThe O'Rahilly, as he became known, was the prime mover in the formation of the Irish Volunteers and its director of arms, organizing the purchase and delivery of the Howth rifles in July 1914. He was Pearse's aide-de-camp in the General Post Office during Easter Week and became commander of the garrison after Connolly was wounded."
+      },
+      {
+        "rank": 2,
+        "book_id": "1411357",
+        "title": "Yosl Rakover Talks to God",
+        "authors": [
+          {
+            "author_id": "368781",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.14,
+        "similarity_score": 0.9933015704154968,
+        "approach": "BERT",
+        "category": "top",
+        "global_rank": 2,
+        "resnet_predicted_emotion": "something else",
+        "bert_predicted_emotion": "sadness",
+        "image_url_large": "https://images.gr-assets.com/books/1320543569l/1411357.jpg",
+        "description": "There are two stories here. One is the now legendary tale of a defiant Jew's refusal to abandon God, even in the face of the greatest suffering the world has known, a testament of faith that has taken on an unpredictable and fascinating life of its own and has often been thought to be a direct testament from the Holocaust.\nThe parallel story is that of Zvi Kolitz, the true author, whose connection to Yosl Rakoverhas been obscured over the fifty years since its original appearance. German journalist Paul Badde tells how a young man came to write this classic response to evil, and then was nearly written out of its history. With brief commentaries by French philosopher Emmanuel Levinas and Leon Wieseltier, author of Kaddish, this edition presents a religious classic and the very human story behind it."
+      },
+      {
+        "rank": 3,
+        "book_id": "28595947",
+        "title": "We Gon' Be Alright: Notes on Race and Resegregation",
+        "authors": [
+          {
+            "author_id": "30905",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.29,
+        "similarity_score": 0.9930918216705322,
+        "approach": "BERT",
+        "category": "top",
+        "global_rank": 3,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "sadness",
+        "image_url_large": "https://images.gr-assets.com/books/1468230274l/28595947.jpg",
+        "description": "In these provocative, powerful essays acclaimed writer/journalist Jeff Chang (Can't Stop Won't Stop, Who We Be) takes an incisive and wide-ranging look at the recent tragedies and widespread protests that have shaken the country. Through deep reporting with key activists and thinkers, passionately personal writing, and distinguished cultural criticism, We Gon' Be Alright links #BlackLivesMatter to #OscarsSoWhite, Ferguson to Washington D.C., the Great Migration to resurgent nativism. Chang explores the rise and fall of the idea of \"diversity,\" the roots of student protest, changing ideas about Asian Americanness, and the impact of a century of racial separation in housing. He argues that resegregation is the unexamined condition of our time, the undoing of which is key to moving the nation forward to racial justice and cultural equity."
+      }
+    ],
+    "middle": [
+      {
+        "rank": 1,
+        "book_id": "1064192",
+        "title": "The Antichrist Theme in the Intertestamental Period",
+        "authors": [
+          {
+            "author_id": "528550",
+            "role": ""
+          }
+        ],
+        "average_rating": 3.67,
+        "similarity_score": 0.5589457154273987,
+        "approach": "BERT",
+        "category": "middle",
+        "global_rank": 343453,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "awe",
+        "image_url_large": "https://images.gr-assets.com/books/1395620769l/1064192.jpg",
+        "description": "What are the antecedents of the \"Antichrist\" figure and its associated themes in Jewish literature prior to the New Testament? Here, Lorein offers the texts and translations of all the relevant passages, together with a discussion of their meaning and significance. He concludes that the \"Antichrist\" theme arises in different currents within this literature, but has its sources in the Old Testament/Hebrew Bible.\nIn its scope and detail, as well as in many of its conclusions and its general synthesis, this book surpasses previous scholarship on a very important aspect of New Testament and early Christian thought."
+      },
+      {
+        "rank": 2,
+        "book_id": "6970002",
+        "title": "The Prince",
+        "authors": [
+          {
+            "author_id": "16201",
+            "role": ""
+          },
+          {
+            "author_id": "121927",
+            "role": "Translator"
+          }
+        ],
+        "average_rating": 3.78,
+        "similarity_score": 0.5589438676834106,
+        "approach": "BERT",
+        "category": "middle",
+        "global_rank": 343454,
+        "resnet_predicted_emotion": "fear",
+        "bert_predicted_emotion": "anger",
+        "image_url_large": "https://images.gr-assets.com/books/1327605330l/6970002.jpg",
+        "description": "FROM THE AWARD-WINNING TRANSLATOR PETER CONSTANTINE\n'It is far safer to be feared than loved...' Machiavelli made his name notorious for centuries with The Prince, his clever and cynical work about power relationships.The key themes of this influential, and ever timely, writer are that adaptability is the key to success and that effective leadership is sometimes only possible at the expense of moral standards."
+      },
+      {
+        "rank": 3,
+        "book_id": "3364596",
+        "title": "Cut to the Quick (Nan Vining Mysteries, #2)",
+        "authors": [
+          {
+            "author_id": "83073",
+            "role": ""
+          }
+        ],
+        "average_rating": 3.74,
+        "similarity_score": 0.5589438676834106,
+        "approach": "BERT",
+        "category": "middle",
+        "global_rank": 343455,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "fear",
+        "image_url_large": "https://images.gr-assets.com/books/1320500996l/3364596.jpg",
+        "description": "The crime scene was like something out of a horror movie. Billboard tycoon Oliver Mercer has been brutally slain in his home in the Pasadena hills, joined in death by his long-legged trophy girlfriend-both of their bodies displayed in a chilling tableau. The murder scene reawakens terrible memories for homicide detective Nan Vining, who survived her own harrowing attack a year earlier. While tracking the taunting gameplayer her daughter Emily dubbed T. B. Mann-The Bad Man-she is now working the Mercer case alongside her ex-flame Jim Kissick, stirring up conflicted feelings in her. From the ritzy estates of L.A.'s Lamborghini-driving set to a rocky desert outpost where rattlesnakes whisper murder, Nan will risk both her badge and her heart on a case that cuts close to the bone."
+      }
+    ],
+    "bottom": [
+      {
+        "rank": 1,
+        "book_id": "31321126",
+        "title": "Zombie-Gut Chili and Other Horrifying Dinners",
+        "authors": [
+          {
+            "author_id": "14794927",
+            "role": ""
+          }
+        ],
+        "average_rating": 2.0,
+        "similarity_score": 0.087152861058712,
+        "approach": "BERT",
+        "category": "bottom",
+        "global_rank": 686905,
+        "resnet_predicted_emotion": "excitement",
+        "bert_predicted_emotion": "disgust",
+        "image_url_large": "https://images.gr-assets.com/books/1479547426l/31321126.jpg",
+        "description": "What can be as creepy and gruesome as it is tasty? Your dinner! Learn how to create a variety of dinner entrees that are both repulsive and good to eat. Cook up some maggot burgers, brain-chunk dumplings, and monster-skin mac and cheese. Cooking dinner has never been so much funor so gross!"
+      },
+      {
+        "rank": 2,
+        "book_id": "1027351",
+        "title": "That's Disgusting!",
+        "authors": [
+          {
+            "author_id": "351628",
+            "role": ""
+          },
+          {
+            "author_id": "351627",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.43,
+        "similarity_score": 0.08705496042966843,
+        "approach": "BERT",
+        "category": "bottom",
+        "global_rank": 686906,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "disgust",
+        "image_url_large": "https://images.gr-assets.com/books/1404579559l/1027351.jpg",
+        "description": "This irresistibly icky book will appeal to kids' love of all things nasty--while charming parents with its wit and energy. Adorable artwork on every spread accompanies simple text. Swallowing a worm, smelling a sock, playing in the cat litter....That's Disgusting!"
+      },
+      {
+        "rank": 3,
+        "book_id": "25734081",
+        "title": "Animals That Make Me Say Ewww!",
+        "authors": [
+          {
+            "author_id": "111627",
+            "role": ""
+          }
+        ],
+        "average_rating": 3.96,
+        "similarity_score": 0.08346759527921677,
+        "approach": "BERT",
+        "category": "bottom",
+        "global_rank": 686907,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "disgust",
+        "image_url_large": "https://images.gr-assets.com/books/1450000591l/25734081.jpg",
+        "description": "That's so gross!\nPrepare to be grossed out by an engaging and unique look at some of the more disgusting survival techniques from the animal kingdom.\nFrom blood-squirting reptiles to blood-sweating mammals to nose-picking primates, learn about some of the most disgusting creatures in the animal kingdom. Author Dawn Cusick and the National Wildlife Federation compile a volume as attractive as its subject is disgusting."
+      }
+    ]
+  },
+  "multimodal_recommendations": {
+    "top": [
+      {
+        "rank": 1,
+        "book_id": "1442782",
+        "title": "The Long March: The true story behind the legendary journey that made Mao's China",
+        "authors": [
+          {
+            "author_id": "678065",
+            "role": ""
+          },
+          {
+            "author_id": "678064",
+            "role": ""
+          }
+        ],
+        "average_rating": 3.8,
+        "similarity_score": 0.9980793595314026,
+        "approach": "Multimodal",
+        "category": "top",
+        "global_rank": 1,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "sadness",
+        "image_url_large": "https://images.gr-assets.com/books/1450349679l/1442782.jpg",
+        "description": "This is a living history of the legendary journey that made Mao's China. In October 1934, the First Front Army of the Chinese Communist Party fled annihilation by Chiang Kai-shek's Nationalists. Some 80,000 men, women and children left their homes to walk with Mao into the unknown. One year, 4,000 miles and countless battles later, fewer than 4,000 were left. From these survivors would grow the army that conquered China 14 years on, changing history for ever. In October 2002, Ed Jocelyn and Andrew McEwen set off to retrace the Red Army's footsteps, and record the experiences of the last-remaining witnesses and participants of the Long March - before it was too late. The result is an account of the March based squarely on eye-witness accounts. It contrasts starkly with the official version and with recent contentions that the March was a fraud. The Long March really did happen, but it was spun into the key propaganda tool Mao wielded in his rise to ultimate power. Bringing together the historic event, with images of a changing society and their own March - a remarkable feat of endurance in itself - the authors offer a unique picture of China, past and present."
+      },
+      {
+        "rank": 2,
+        "book_id": "15870096",
+        "title": "Summer of Hope",
+        "authors": [
+          {
+            "author_id": "6469975",
+            "role": ""
+          }
+        ],
+        "average_rating": 3.79,
+        "similarity_score": 0.9968336820602417,
+        "approach": "Multimodal",
+        "category": "top",
+        "global_rank": 2,
+        "resnet_predicted_emotion": "awe",
+        "bert_predicted_emotion": "sadness",
+        "image_url_large": "https://images.gr-assets.com/books/1356574564l/15870096.jpg",
+        "description": "A secret can change everything.\nAfter witnessing her twin brother's death, sixteen-year-old Callie shuts down. Forced to go to her family's summer beach house, she resolves to erase the pain any way she can. Enter the \"Perfect's\"--the Gold Card group of girls who offer escape in the form of parties, booze and boys.\nThings change when she meets Ethan. Callie does her best to convince herself she couldn't care less if Ethan looks like he just stepped out of a magazine and is completely adorkable to boot. Despite trying to keep her distance, Callie is drawn to his sweet ways and sexy smile. She falls hard--but her world comes crashing down when she discovers he's been hiding a secret that could change everything. Ethan came to the beach to escape, to live without the label. Because his label... is the kid with Hodgkin's disease.\nCallie is left with the choice of standing by Ethan's side and watching another person she loves die, or running and abandoning the one person who helped her to believe in love again. Callie's decision ends up putting her own life in danger, and changes the lives of everyone around her, forever."
+      },
+      {
+        "rank": 3,
+        "book_id": "1816515",
+        "title": "Smoldering City: Chicagoans and the Great Fire, 1871-1874",
+        "authors": [
+          {
+            "author_id": "82596",
+            "role": ""
+          }
+        ],
+        "average_rating": 3.33,
+        "similarity_score": 0.9954103231430054,
+        "approach": "Multimodal",
+        "category": "top",
+        "global_rank": 3,
+        "resnet_predicted_emotion": "awe",
+        "bert_predicted_emotion": "sadness",
+        "image_url_large": "https://images.gr-assets.com/books/1328872691l/1816515.jpg",
+        "description": "The fateful kick of Mrs. O'Leary's cow, the wild flight before the flames, the astonishingly quick rebuilding--these are the well-known stories of the Great Chicago Fire of 1871. But as much as Chicago's recovery from disaster was a remarkable civic achievement, the Great Fire is also the story of a city's people divided and at odds. This is the story that Karen Sawislak tells so revealingly in this book.\nIn a detailed account, drawn on memoirs, private correspondences, and other documents, Sawislak chronicles years of widespread, sometimes bitter, social and political conflict in the fire's wake, from fights over relief soup kitchens to cries against profiteering and marches on city hall by workers burned out of their homes. She shows how through the years of rebuilding the people of Chicago struggled to define civic order--and the role that \"good citizens\" would play within it. As they rebuilt, she writes, Chicagoans confronted hard questions about charity and social welfare, work and labor relations, morality, and the limits of state power. Their debates in turn exposed the array of values and interests that different class, ethnic, and religious groups brought to these public discussions.\n\"Sawislak combines the copious detail of a historian with the vivid portrayals of a storyteller in her investigation of the infamous Chicago fire. . . . Highlighted by historical maps, plates and engravings, with an epilogue and notes, Smoldering Citypresents an extremely thorough and engaging study of this extraordinary disaster.\"--Publishers Weekly"
+      }
+    ],
+    "middle": [
+      {
+        "rank": 1,
+        "book_id": "555274",
+        "title": "The Dhimmi: Jews and Christians Under Islam",
+        "authors": [
+          {
+            "author_id": "304834",
+            "role": "Translator"
+          },
+          {
+            "author_id": "268083",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.29,
+        "similarity_score": 0.6542384624481201,
+        "approach": "Multimodal",
+        "category": "middle",
+        "global_rank": 343453,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "awe",
+        "image_url_large": "https://images.gr-assets.com/books/1356135542l/555274.jpg",
+        "description": "Indispensable to the Western observer for a full understanding of the complexities of the conflicts in the Middle East, this study analyzes and documents the historical, social, and spiritual realities of the dhimmi peoples -- the non-Arab and non-Muslim communities subjected to Muslim domination after the conquest of their territories by Arabs."
+      },
+      {
+        "rank": 2,
+        "book_id": "1728883",
+        "title": "The Witches",
+        "authors": [
+          {
+            "author_id": "4273",
+            "role": ""
+          },
+          {
+            "author_id": "146",
+            "role": "Illustrator"
+          }
+        ],
+        "average_rating": 4.17,
+        "similarity_score": 0.6542359590530396,
+        "approach": "Multimodal",
+        "category": "middle",
+        "global_rank": 343454,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "anger",
+        "image_url_large": "https://images.gr-assets.com/books/1387790017l/1728883.jpg",
+        "description": "The Grand High Witch of all the World has gathered together the witches of England for an annual conference at the Hotel Magnificent in Bournemouth. Their agenda is the elimination of all the children in the country and the prospects for their young victims look bleak. But her Grand High Witch and her cronies have reckoned without the spark and ingenuity of a young guest at the hotel and his rather brilliant grandmother.\nFrom the Trade Paperback edition."
+      },
+      {
+        "rank": 3,
+        "book_id": "15780375",
+        "title": "Mary of the Aether",
+        "authors": [
+          {
+            "author_id": "6443576",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.03,
+        "similarity_score": 0.6542353630065918,
+        "approach": "Multimodal",
+        "category": "middle",
+        "global_rank": 343455,
+        "resnet_predicted_emotion": "awe",
+        "bert_predicted_emotion": "fear",
+        "image_url_large": "https://images.gr-assets.com/books/1354931244l/15780375.jpg",
+        "description": "Fourteen-year-old Mary Lanham lives an unremarkable life in an unremarkable small town, until the day a man in a long, gray cloak creeps out of the forest, and a centuries-old mystery begins to unfold. What is the magical secret Mary's father is hiding, a secret that has put both of their lives in danger? What is the truth about Mary's past that has awakened a great evil? And how can she win the heart of the boy she loves when the whole world is falling apart?\nMary of the Aether is the first volume of a four book Young Adult series set in small-town Arkansas:\nMary of the Aether\nMary of Shadows\nMary of Starlight (coming February 2014)\nMary of Cosmos (coming sometime late 2014)"
+      }
+    ],
+    "bottom": [
+      {
+        "rank": 1,
+        "book_id": "6928833",
+        "title": "100 Most Disgusting Things On The Planet",
+        "authors": [
+          {
+            "author_id": "53373",
+            "role": ""
+          }
+        ],
+        "average_rating": 3.98,
+        "similarity_score": 0.13103584945201874,
+        "approach": "Multimodal",
+        "category": "bottom",
+        "global_rank": 686905,
+        "resnet_predicted_emotion": "fear",
+        "bert_predicted_emotion": "disgust",
+        "image_url_large": "https://images.gr-assets.com/books/1328837581l/6928833.jpg",
+        "description": "Packed full of examples of the most disgusting and repulsive things on the planet.\nThe revolting and fascinating book is packed to the brim with disgusting, gross, and repulsive things sure to appeal to readers of all ages. The content is divided into a range of categories, from offensive animals, plants, and other creatures to foods, inventions, and of course, a selection of revolting human body bits such as snot, scabs, and earwax. Each page has a Yuck Factor rating and description, along with photos and illustrations. Sidebars include extra gross details and tips."
+      },
+      {
+        "rank": 2,
+        "book_id": "30844277",
+        "title": "When I Was A kid 4",
+        "authors": [
+          {
+            "author_id": "6438968",
+            "role": ""
+          }
+        ],
+        "average_rating": 4.28,
+        "similarity_score": 0.12938132882118225,
+        "approach": "Multimodal",
+        "category": "bottom",
+        "global_rank": 686906,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "disgust",
+        "image_url_large": "https://images.gr-assets.com/books/1468992944l/30844277.jpg",
+        "description": "This book has Everything.\nExcept kissing.\nBecause that is gross."
+      },
+      {
+        "rank": 3,
+        "book_id": "25734081",
+        "title": "Animals That Make Me Say Ewww!",
+        "authors": [
+          {
+            "author_id": "111627",
+            "role": ""
+          }
+        ],
+        "average_rating": 3.96,
+        "similarity_score": 0.12701554596424103,
+        "approach": "Multimodal",
+        "category": "bottom",
+        "global_rank": 686907,
+        "resnet_predicted_emotion": "amusement",
+        "bert_predicted_emotion": "disgust",
+        "image_url_large": "https://images.gr-assets.com/books/1450000591l/25734081.jpg",
+        "description": "That's so gross!\nPrepare to be grossed out by an engaging and unique look at some of the more disgusting survival techniques from the animal kingdom.\nFrom blood-squirting reptiles to blood-sweating mammals to nose-picking primates, learn about some of the most disgusting creatures in the animal kingdom. Author Dawn Cusick and the National Wildlife Federation compile a volume as attractive as its subject is disgusting."
+      }
+    ]
+  }
+}

@@ -5,6 +5,8 @@ backups/
 *.parquet*
 media/
 website/models/
+EmotionCLIP_V2/
+*.sql
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
