@@ -6,6 +6,7 @@ backups/
 media/
 website/models/
 EmotionCLIP_V2/
+artemis_scripts/models/
 *.sql
 
 # Byte-compiled / optimized / DLL files
