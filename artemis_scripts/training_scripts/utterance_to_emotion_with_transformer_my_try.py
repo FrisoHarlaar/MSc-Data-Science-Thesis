@@ -24,8 +24,8 @@ max_train_epochs = 50
 subsample_data = False
 
 # Paths - update these to your paths
-my_out_dir = r'..\..\..\predictions\bert_based'
-preprocessed_artemis = r'..\..\..\..\old_preprocessed_data\artemis_preprocessed.csv'
+my_out_dir = r'..\predictions\bert_based'
+preprocessed_artemis = r'..\preprocessed_data\artemis_preprocessed.csv'
 create_dir(my_out_dir)
 best_model_dir = osp.join(my_out_dir, 'best_model')
 create_dir(best_model_dir)
