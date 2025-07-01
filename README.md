@@ -113,7 +113,7 @@ jupyter notebook "Exploratory Data Analysis.ipynb"
 
 ### Step 2: Model Training
 
-#### ResNet Training -> need GPU for this
+#### ResNet Training -> definitely need GPU for this
 ```bash
 # Train ResNet on ArtEmis
 jupyter notebook image_to_emotion_classifier.ipynb
@@ -124,7 +124,6 @@ jupyter notebook image_to_emotion_classifier.ipynb
 
 #### BERT Training -> need GPU for this
 ```bash
-# Navigate to ArtEmis directory and run:
 python utterance_to_emotion_with_transformer_my_try.py
 ```
 - Fine-tunes BERT on emotion classification
